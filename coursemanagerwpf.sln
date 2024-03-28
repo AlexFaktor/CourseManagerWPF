@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseManagerWPF", "CourseManagerWPF\CourseManagerWPF.csproj", "{98A828E1-F2CA-4A44-B07C-84A5C58295D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseManagerWPF", "CourseManagerWPF\CourseManagerWPF.csproj", "{98A828E1-F2CA-4A44-B07C-84A5C58295D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseManagerDatabase", "CourseManagerDatabase\CourseManagerDatabase.csproj", "{FDE9ED8A-625B-4DF6-A456-22E4E272448C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{98A828E1-F2CA-4A44-B07C-84A5C58295D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98A828E1-F2CA-4A44-B07C-84A5C58295D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98A828E1-F2CA-4A44-B07C-84A5C58295D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE9ED8A-625B-4DF6-A456-22E4E272448C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE9ED8A-625B-4DF6-A456-22E4E272448C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE9ED8A-625B-4DF6-A456-22E4E272448C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE9ED8A-625B-4DF6-A456-22E4E272448C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

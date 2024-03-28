@@ -13,4 +13,8 @@
     <Folder Include="MVVM\ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CourseManagerDatabase\CourseManagerDatabase.csproj" />
+  </ItemGroup>
+
 </Project>

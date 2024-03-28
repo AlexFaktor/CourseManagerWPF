@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseManagerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Course Manager" Height="450" Width="800"
+        Background="LightGray">
     <Grid>
+        <Grid.RowDefinitions>
 
+        </Grid.RowDefinitions>
     </Grid>
 </Window>
