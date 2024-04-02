@@ -9,12 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\Models\" />
     <Folder Include="MVVM\ViewModels\" />
+    <Folder Include="Resource\Image\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CourseManagerDatabase\CourseManagerDatabase.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CourseManagerDatabase2\CourseManagerDatabase.csproj" />
   </ItemGroup>
 
 </Project>
