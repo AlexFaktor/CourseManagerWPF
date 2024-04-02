@@ -4,12 +4,89 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseManagerWPF"
+        xmlns:vm="clr-namespace:CourseManagerWPF.MVVM.ViewModels"
         mc:Ignorable="d"
         Title="Course Manager" Height="450" Width="800"
         Background="LightGray">
-    <Grid>
-        <Grid.RowDefinitions>
 
-        </Grid.RowDefinitions>
+    <Window.DataContext>
+        <vm:MainVM />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resource/Image/ImageDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <StackPanel>
+                
+                <TabControl>
+                    
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" Source="{StaticResource IconCourse}"/>
+                                <TextBlock Margin="4, 4, 0, 0" Text="Courses"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                        <ListBox>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" Source="{StaticResource IconGroup}"/>
+                                <TextBlock Margin="4, 4, 0, 0" Text="Groups"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" Source="{StaticResource IconStudent}"/>
+                                <TextBlock Margin="4, 4, 0, 0" Text="Students"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" Source="{StaticResource IconTeacher}"/>
+                                <TextBlock Margin="4, 4, 0, 0" Text="Teachers"/>
+                            </StackPanel>
+                        </TabItem.Header>
+
+                    </TabItem>
+
+                </TabControl>
+                
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

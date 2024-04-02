@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseManagerWPF", "CourseManagerWPF\CourseManagerWPF.csproj", "{98A828E1-F2CA-4A44-B07C-84A5C58295D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseManagerDatabase", "CourseManagerDatabase2\CourseManagerDatabase.csproj", "{7273CFB7-168C-4590-B87F-5CC4949CF78A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseManagerDatabase", "CourseManagerDatabase\CourseManagerDatabase.csproj", "{7273CFB7-168C-4590-B87F-5CC4949CF78A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

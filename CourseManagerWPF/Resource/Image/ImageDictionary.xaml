@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BitmapImage x:Key="IconGroup" UriSource="/Resource/Image/models/group.png" />
+    <BitmapImage x:Key="IconCourse" UriSource="/Resource/Image/models/course.png" />
+    <BitmapImage x:Key="IconTeacher" UriSource="/Resource/Image/models/teacher.png" />
+    <BitmapImage x:Key="IconStudent" UriSource="/Resource/Image/models/student.png" />
+
+    <BitmapImage x:Key="IconAdd" UriSource="/Resource/Image/ui/more.png" />
+    <BitmapImage x:Key="IconSave" UriSource="/Resource/Image/ui/diskette_true.png" />
+    <BitmapImage x:Key="IconSaveOff" UriSource="/Resource/Image/ui/diskette_false.png" />
+    <BitmapImage x:Key="IconDelete" UriSource="/Resource/Image/ui/delete.png" />
+    <BitmapImage x:Key="IconExport" UriSource="/Resource/Image/ui/export.png" />
+    <BitmapImage x:Key="IconImport" UriSource="/Resource/Image/ui/import.png" />
+    <BitmapImage x:Key="IconLock" UriSource="/Resource/Image/ui/lock.png" />
+    <BitmapImage x:Key="IconPencil" UriSource="/Resource/Image/ui/pencil.png" />
+    <BitmapImage x:Key="IconSelectItem" UriSource="/Resource/Image/ui/select_items.png" />
+    <BitmapImage x:Key="IconNewItem" UriSource="/Resource/Image/ui/new_file.png" />
+    <BitmapImage x:Key="IconUpdate" UriSource="/Resource/Image/ui/updating.png" />
+</ResourceDictionary>
