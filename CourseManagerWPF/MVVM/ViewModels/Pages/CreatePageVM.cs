@@ -4,6 +4,6 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages
 {
     internal class CreatePageVM : PageVM
     {
-
+        
     }
 }

@@ -1,5 +1,7 @@
 ﻿using CourseManagerWPF.MVVM.ViewModels.Base;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
+using CourseManagerWPF.MVVM.ViewModels.Pages;
+using CourseManagerWPF.MVVM.ViewModels.Pages.Base;
 using System.Collections.ObjectModel;
 
 namespace CourseManagerWPF.MVVM.ViewModels
@@ -10,6 +12,8 @@ namespace CourseManagerWPF.MVVM.ViewModels
         private ObservableCollection<GroupVM> _groups;
         private ObservableCollection<StudentVM> _students;
         private ObservableCollection<TeacherVM> _teachers;
+
+        private PageVM _page =  new CreatePageVM();
 
         public ObservableCollection<CourseVM>? Courses
         {
@@ -33,6 +37,12 @@ namespace CourseManagerWPF.MVVM.ViewModels
         {
             get => _teachers;
             set => Set(ref _teachers, value);
+        }
+
+        public PageVM Page
+        {
+            get => _page;
+            set => Set(ref _page, value);
         }
     }
 }
