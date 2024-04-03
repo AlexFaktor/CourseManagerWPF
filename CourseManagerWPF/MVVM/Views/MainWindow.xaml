@@ -22,12 +22,18 @@
     </Window.Resources>
 
     <Grid>
-        
-        
+         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" MinWidth="320"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+
+        <GridSplitter Grid.Column="0" 
+                      VerticalAlignment="Stretch"
+                      
+            Panel.ZIndex="1"
+            BorderBrush="DarkGray"
+            BorderThickness="1" />
 
         <Grid Grid.Column="0">
             <StackPanel>
@@ -41,12 +47,12 @@
                                 <TextBlock Margin="4, 4, 0, 0" Text="Courses"/>
                             </StackPanel>
                         </TabItem.Header>
-
-                        <ListBox>
+                        
+                        <ListBox ItemsSource="{Binding Courses}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        
+                                        <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -62,6 +68,16 @@
                             </StackPanel>
                         </TabItem.Header>
 
+                        <ListBox ItemsSource="{Binding Groups}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
                     </TabItem>
 
                     <TabItem>
@@ -71,6 +87,16 @@
                                 <TextBlock Margin="4, 4, 0, 0" Text="Students"/>
                             </StackPanel>
                         </TabItem.Header>
+
+                        <ListBox ItemsSource="{Binding Students}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
                     </TabItem>
 
@@ -82,11 +108,26 @@
                             </StackPanel>
                         </TabItem.Header>
 
+                        <ListBox ItemsSource="{Binding Teachers}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
                     </TabItem>
 
                 </TabControl>
                 
             </StackPanel>
         </Grid>
+
+        <Grid Grid.Column="1"> 
+            
+        </Grid>
+        
     </Grid>
 </Window>

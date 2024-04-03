@@ -62,8 +62,4 @@
     <Resource Include="Resource\Image\ui\updating.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MVVM\ViewModels\Entitys\" />
-  </ItemGroup>
-
 </Project>
