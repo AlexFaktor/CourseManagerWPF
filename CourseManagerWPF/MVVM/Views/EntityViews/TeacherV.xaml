@@ -38,25 +38,97 @@ d:DataContext="{d:DesignInstance vm:TeacherPageVM, IsDesignTimeCreatable=False }
 
             <StackPanel Orientation="Horizontal">
                 <Image
-                    Width="18"
-                    Height="18"
-                    Margin="5"
-                    Source="{StaticResource IconPencil}" />
+        Width="18"
+        Height="18"
+        Margin="5"
+        Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-            <Run FontWeight="Bold" Text="Name:" />
+        <Run FontWeight="Bold" Text="Name:" />
                 </TextBlock>
                 <TextBox
-                    Width="auto"
-                    MinWidth="100"
-                    Margin="10,0,0,0"
-                    Background="White"
-                    BorderThickness="0"
-                    FontSize="20"
-                    Text="{Binding Teacher.Name}" />
+        Width="auto"
+        MinWidth="100"
+        Margin="10,0,0,0"
+        Background="White"
+        BorderThickness="0"
+        FontSize="20"
+        Text="{Binding Teacher.Teacher.Name }" />
             </StackPanel>
 
-            <ListBox Height="100" Margin="8" ItemsSource="{Binding Teacher.Groups}">
+            <StackPanel Orientation="Horizontal">
+                <Image
+        Width="18"
+        Height="18"
+        Margin="5"
+        Source="{StaticResource IconPencil}" />
+                <TextBlock MinWidth="120" FontSize="20">
+        <Run FontWeight="Bold" Text="Surname:" />
+                </TextBlock>
+                <TextBox
+        Width="auto"
+        MinWidth="100"
+        Margin="10,0,0,0"
+        Background="White"
+        BorderThickness="0"
+        FontSize="20"
+        Text="{Binding Teacher.Teacher.Surname }" />
+            </StackPanel>
 
+            <StackPanel Orientation="Horizontal">
+                <Image
+        Width="18"
+        Height="18"
+        Margin="5"
+        Source="{StaticResource IconPencil}" />
+                <TextBlock MinWidth="120" FontSize="20">
+        <Run FontWeight="Bold" Text="Patronymic:" />
+                </TextBlock>
+                <TextBox
+        Width="auto"
+        MinWidth="100"
+        Margin="10,0,0,0"
+        Background="White"
+        BorderThickness="0"
+        FontSize="20"
+        Text="{Binding Teacher.Teacher.Patronymic }" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Image
+        Width="18"
+        Height="18"
+        Margin="5"
+        Source="{StaticResource IconPencil}" />
+                <TextBlock MinWidth="120" FontSize="20">
+        <Run FontWeight="Bold" Text="Birthday:" />
+                </TextBlock>
+                <DatePicker
+        BorderThickness="0"
+        FontSize="18"
+        SelectedDate="{Binding Teacher.Teacher.Birthday, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Image
+        Width="18"
+        Height="18"
+        Margin="5"
+        Source="{StaticResource IconPencil}" />
+                <TextBlock MinWidth="120" FontSize="20">
+        <Run FontWeight="Bold" Text="Email:" />
+                </TextBlock>
+                <TextBox
+        Width="auto"
+        MinWidth="100"
+        Margin="10,0,0,0"
+        Background="White"
+        BorderThickness="0"
+        FontSize="20"
+        Text="{Binding Teacher.Teacher.Email }" />
+            </StackPanel>
+
+            <ListBox Height="100" Margin="8" ItemsSource="{Binding Teacher.Teacher.Groups}">
+                
             </ListBox>
 
         </StackPanel>

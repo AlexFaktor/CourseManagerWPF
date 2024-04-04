@@ -1,30 +1,22 @@
-﻿using CourseManagerWPF.MVVM.ViewModels.Base;
+﻿using CourseManagerDatabase.Entitys;
+using CourseManagerWPF.MVVM.ViewModels.Base;
 using System.Collections.ObjectModel;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Entitys
 {
-    public class CourseVM(Guid id, string name, List<GroupVM> groups) : ViewModel
+    public class CourseVM : ViewModel
     {
-        private Guid _id = id;
-        private string _name = name;
-        private ObservableCollection<GroupVM> _groups = new ObservableCollection<GroupVM>(groups);
+        private CourseRecord _courseRecord;
 
-        public Guid Id
+        public CourseVM(CourseRecord courseRecord)
         {
-            get => _id;
-            set => Set(ref _id, value);
+            _courseRecord = courseRecord;
         }
 
-        public string Name
+        public CourseRecord Course
         {
-            get => _name;
-            set => Set(ref _name, value);
-        }
-
-        public ObservableCollection<GroupVM> Groups
-        {
-            get => _groups;
-            set => Set(ref _groups, value);
+            get => _courseRecord;
+            set => Set(ref _courseRecord, value);
         }
     }
 }

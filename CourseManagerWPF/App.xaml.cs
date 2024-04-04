@@ -1,4 +1,5 @@
 ﻿using CourseManagerDatabase.Database;
+using CourseManagerWPF.Database;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
@@ -12,7 +13,8 @@ namespace CourseManagerWPF
     public partial class App : Application
     {
         public ManagerDbContext DbContext { get; set; }
-        public ManagerRepository Db { get; set; }
+        public ManagerRepository DbRepository { get; set; }
+        public CourseDatabase Database { get; set; }
 
         public ObservableCollection<CourseVM> Courses { get; set; }
         public ObservableCollection<GroupVM> Groups { get; set; }
@@ -23,10 +25,14 @@ namespace CourseManagerWPF
         {
             DbContext = new ManagerDbContext();
             DbContext.Database.EnsureCreated();
-            Db = new ManagerRepository(DbContext);
 
-            
-            
+            DbRepository = new ManagerRepository(DbContext);
+            Database = new CourseDatabase(DbRepository);
+
+            Courses = new ObservableCollection<CourseVM>( Database.GetCourseVMs());
+            Groups  = new ObservableCollection<GroupVM>( Database.GetGroupVMs());
+            Students = new ObservableCollection<StudentVM>( Database.GetStudentsVMs());
+            Teachers = new ObservableCollection<TeacherVM>( Database.GetTeacherVMs());
         }
     }
 }

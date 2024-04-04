@@ -4,7 +4,7 @@ using CourseManagerWPF.MVVM.Views;
 
 namespace CourseManagerWPF.Database
 {
-    internal class Database(ManagerRepository db)
+    public class CourseDatabase(ManagerRepository db)
     {
         public ManagerRepository _db { get; set; } = db;
 

@@ -1,5 +1,6 @@
 ﻿using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using CourseManagerWPF.MVVM.ViewModels.Pages.Base;
+using System.Collections.ObjectModel;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
 {

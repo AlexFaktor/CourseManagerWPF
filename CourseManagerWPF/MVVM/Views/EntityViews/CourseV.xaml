@@ -36,26 +36,26 @@
             Margin="5"
             Source="{StaticResource IconCourse}" />
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="1">
                 <Image
-                Width="18"
-                Height="18"
-                Margin="5"
-                Source="{StaticResource IconPencil}" />
+                    Width="18"
+                    Height="18"
+                    Margin="5"
+                    Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-                <Run FontWeight="Bold" Text="Name:" />
+                    <Run FontWeight="Bold" Text="Name:" />
                 </TextBlock>
                 <TextBox
-                Width="auto"
-                MinWidth="100"
-                Margin="10,0,0,0"
-                Background="White"
-                BorderThickness="0"
-                FontSize="20"
-                Text="{Binding Course.Name}" />
+                    Width="auto"
+                    MinWidth="100"
+                    Margin="10,0,0,0"
+                    Background="White"
+                    BorderThickness="0"
+                    FontSize="20"
+                    Text="{Binding Course.Course.Name}" />
             </StackPanel>
 
-            <ListBox Height="100" Margin="8" ItemsSource="{Binding Course.Groups}">
+            <ListBox Height="100" Margin="8" ItemsSource="{Binding Course.Course.Groups}">
                 
             </ListBox>
 
