@@ -18,7 +18,7 @@ namespace CourseManagerWPF.MVVM.Views
     /// <summary>
     /// Логика взаимодействия для CreateV.xaml
     /// </summary>
-    public partial class CreateV : Page
+    public partial class CreateV : UserControl
     {
         public CreateV()
         {

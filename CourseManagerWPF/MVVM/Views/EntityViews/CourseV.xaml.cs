@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CourseManagerWPF.MVVM.Views
+namespace CourseManagerWPF.MVVM.Views.EntityViews
 {
     /// <summary>
     /// Логика взаимодействия для CourseV.xaml
     /// </summary>
-    public partial class CourseV : Page
+    public partial class CourseV : UserControl
     {
         public CourseV()
         {
