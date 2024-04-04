@@ -56,7 +56,11 @@
             </StackPanel>
 
             <ListBox Height="100" Margin="8" ItemsSource="{Binding Course.Course.Groups}">
-                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
 
         </StackPanel>

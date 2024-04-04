@@ -36,6 +36,10 @@
             BorderThickness="1" />
 
         <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
             <StackPanel>
                 
                 <TabControl>
@@ -123,6 +127,17 @@
                 </TabControl>
                 
             </StackPanel>
+
+            <GroupBox Grid.Row="1" MinHeight="40">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <Button Height="38" Width="60" Content="Add">
+                        
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+            
+            
+            
         </Grid>
 
         <Grid Grid.Column="1"> 

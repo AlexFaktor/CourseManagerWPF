@@ -126,13 +126,19 @@ d:DataContext="{d:DesignInstance vm:TeacherPageVM, IsDesignTimeCreatable=False }
         FontSize="20"
         Text="{Binding Teacher.Teacher.Email }" />
             </StackPanel>
-
             <ListBox Height="100" Margin="8" ItemsSource="{Binding Teacher.Teacher.Groups}">
-                
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text="{Binding Surname}"></TextBlock>
+                            <TextBlock Text="{Binding Teacher}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
-
         </StackPanel>
-
+        
         <StackPanel Grid.Row="1" Orientation="Horizontal">
 
         </StackPanel>

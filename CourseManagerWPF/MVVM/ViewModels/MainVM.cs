@@ -13,7 +13,7 @@ namespace CourseManagerWPF.MVVM.ViewModels
         private ObservableCollection<StudentVM> _students;
         private ObservableCollection<TeacherVM> _teachers;
 
-        private PageVM _page =  new CreatePageVM();
+        private PageVM _page =  new CreatePageVM()iews;
 
         public ObservableCollection<CourseVM>? Courses
         {
