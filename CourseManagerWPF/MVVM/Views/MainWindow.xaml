@@ -5,6 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseManagerWPF"
         xmlns:vm="clr-namespace:CourseManagerWPF.MVVM.ViewModels"
+        xmlns:pages="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages"
+        xmlns:pagesEnity="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages"
+        xmlns:views="clr-namespace:CourseManagerWPF.MVVM.Views"
+        xmlns:viewsEntity="clr-namespace:CourseManagerWPF.MVVM.Views.EntityViews"
         mc:Ignorable="d"
         Title="Course Manager" Height="450" Width="800"
         Background="LightGray">
@@ -130,7 +134,7 @@
 
             <GroupBox Grid.Row="1" MinHeight="40">
                 <StackPanel Margin="5" Orientation="Horizontal">
-                    <Button Height="38" Width="60" Content="Add">
+                    <Button Height="38" Width="80" Content="New object" Click="Button_Click">
                         
                     </Button>
                 </StackPanel>
@@ -140,7 +144,34 @@
             
         </Grid>
 
-        <Grid Grid.Column="1"> 
+        <Grid Grid.Column="1">
+
+            <ContentControl Content="{Binding Page}">
+                <ContentControl.Resources>
+
+                    <DataTemplate DataType="{x:Type pages:CreatePageVM }">
+                        <views:CreateV/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:CoursePageVM }">
+                        <viewsEntity:CourseV/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:GroupPageVM }">
+                        <viewsEntity:GroupV/>
+                    </DataTemplate >
+
+                    <DataTemplate DataType="{x:Type pagesEnity:StudentPageVM }">
+                        <viewsEntity:StudentV/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:TeacherPageVM }">
+                        <viewsEntity:TeacherV/>
+                    </DataTemplate>
+
+
+                </ContentControl.Resources>
+            </ContentControl>
             
         </Grid>
         

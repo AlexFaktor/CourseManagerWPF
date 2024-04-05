@@ -4,11 +4,435 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CourseManagerWPF.MVVM.Views"
+             xmlns:vm="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
+    <UserControl.DataContext>
+        <vm:CreatePageVM />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resource/Image/ImageDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
-        
+        <TabControl Background="LightGray">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="{StaticResource IconCourse}"/>
+                        <TextBlock Margin="4, 4, 0, 0" Text="Course"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <StackPanel Grid.Row="0" 
+                    Orientation="Vertical" 
+                    Margin="10" HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+
+                    <Image
+                        HorizontalAlignment="Left"
+                        Width="40"
+                        Height="40"
+                        Margin="5"
+                        Source="{StaticResource IconCourse}" />
+
+                    <StackPanel Orientation="Horizontal" Margin="1">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Name:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Course.Course.Name}" />
+                    </StackPanel>
+
+                    <Button Margin="30" Content="Add course" Width="100" Height="40"></Button>
+                </StackPanel>
+             
+
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="{StaticResource IconGroup}"/>
+                        <TextBlock Margin="4, 4, 0, 0" Text="Group"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <StackPanel Grid.Row="0" 
+                    Orientation="Vertical" 
+                    Margin="10" HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+
+                    <Image
+                        HorizontalAlignment="Left"
+                        Width="40"
+                        Height="40"
+                        Margin="5"
+                        Source="{StaticResource IconGroup}" />
+
+                    <StackPanel Orientation="Horizontal" Margin="1">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Name:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Group.Group.Name}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="1">
+                        <Image
+                            Width="20"
+                            Height="20 "
+                            Margin="5"
+                            Source="{StaticResource IconSelectItem}" />         
+                        <TextBlock MinWidth="80" FontSize="20">
+                            <Run FontWeight="Bold" Text="Course &gt;&gt;" />
+                        </TextBlock>
+                        <ComboBox 
+                            Width="100"
+                            Margin="5,0,0,0" 
+                            ItemsSource="{Binding Courses}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Course.Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+
+                        </ComboBox>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="1">
+                        <Image
+                            Width="20"
+                            Height="20 "
+                            Margin="5"
+                            Source="{StaticResource IconSelectItem}" />
+                        <TextBlock MinWidth="80" FontSize="20">
+                            <Run FontWeight="Bold" Text="Teacher &gt;&gt;" />
+                        </TextBlock>
+                        <ComboBox 
+                            Width="100"
+                            Margin="5,0,0,0" 
+                            ItemsSource="{Binding Teachers}">       
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Teacher.Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <Button Margin="30" Content="Add group" Width="100" Height="40"></Button>
+                </StackPanel>
+
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="{StaticResource IconStudent}"/>
+                        <TextBlock Margin="4, 4, 0, 0" Text="Student"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <StackPanel Grid.Row="0" 
+                    Orientation="Vertical" 
+                    Margin="10" HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+
+                    <Image
+                        HorizontalAlignment="Left"
+                        Width="40"
+                        Height="40"
+                        Margin="5"
+                        Source="{StaticResource IconStudent}" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Name:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Student.Student.Name }" />   
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Surname:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Student.Student.Surname }" />        
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" /> 
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Patronymic:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Student.Student.Patronymic }" /> 
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Birthday:" />
+                        </TextBlock>
+                        <DatePicker
+                            BorderThickness="0"
+                            FontSize="18"
+                            SelectedDate="{Binding Student.Student.Birthday, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Email:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Student.Student.Email }" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Rating:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Student.Student.Rating }" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="1">
+                        <Image
+                            Width="20"
+                            Height="20 "
+                            Margin="5"
+                            Source="{StaticResource IconSelectItem}" />
+                        <TextBlock MinWidth="80" FontSize="20">
+                            <Run FontWeight="Bold" Text="Group &gt;&gt;" />
+                        </TextBlock>
+                        <ComboBox 
+                            Width="100"
+                            Margin="5,0,0,0" 
+                            ItemsSource="{Binding Groups}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Group.Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                    </StackPanel>
+
+                    <Button Margin="30" Content="Add student" Width="100" Height="40"></Button>
+
+                </StackPanel>
+
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="{StaticResource IconTeacher}"/>
+                        <TextBlock Margin="4, 4, 0, 0" Text="Teacher"/>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <StackPanel Grid.Row="0" 
+                    Orientation="Vertical" 
+                    Margin="10" HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+
+                    <Image
+                        HorizontalAlignment="Left"
+                        Width="40"
+                        Height="40"
+                        Margin="5"
+                        Source="{StaticResource IconTeacher}" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Name:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Teacher.Teacher.Name }" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Surname:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Teacher.Teacher.Surname }" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Patronymic:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Teacher.Teacher.Patronymic }" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Birthday:" />
+                        </TextBlock>
+                        <DatePicker
+                            BorderThickness="0"
+                            FontSize="18"
+                            SelectedDate="{Binding Teacher.Teacher.Birthday, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Width="18"
+                            Height="18"
+                            Margin="5"
+                            Source="{StaticResource IconPencil}" />
+                        <TextBlock MinWidth="120" FontSize="20">
+                            <Run FontWeight="Bold" Text="Email:" />
+                        </TextBlock>
+                        <TextBox
+                            Width="auto"
+                            MinWidth="100"
+                            Margin="10,0,0,0"
+                            Background="White"
+                            BorderThickness="0"
+                            FontSize="20"
+                            Text="{Binding Teacher.Teacher.Email }" />
+                    </StackPanel>
+
+                    <Button Margin="30" Content="Add teacher" Width="100" Height="40"></Button>
+
+                </StackPanel>
+
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </UserControl>
+    
+    

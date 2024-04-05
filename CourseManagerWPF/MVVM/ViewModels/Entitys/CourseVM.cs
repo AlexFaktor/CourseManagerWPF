@@ -4,14 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Entitys
 {
-    public class CourseVM : ViewModel
+    public class CourseVM(CourseRecord courseRecord) : ViewModel
     {
-        private CourseRecord _courseRecord;
-
-        public CourseVM(CourseRecord courseRecord)
-        {
-            _courseRecord = courseRecord;
-        }
+        private CourseRecord _courseRecord = courseRecord;
 
         public CourseRecord Course
         {
