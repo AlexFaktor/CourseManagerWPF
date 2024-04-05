@@ -26,13 +26,13 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages.Base
             get => _courses;
             set => Set(ref _courses, value);
         }
-        
+
         public ObservableCollection<GroupVM> Groups
         {
             get => _groups;
             set => Set(ref _groups, value);
         }
-        
+
         public ObservableCollection<StudentVM> Students
         {
             get => _students;

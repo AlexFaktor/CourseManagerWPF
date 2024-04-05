@@ -3,9 +3,9 @@ using CourseManagerWPF.MVVM.ViewModels.Pages.Base;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
 {
-    internal class StudentPageVM : PageVM
+    internal class StudentPageVM(StudentVM student) : PageVM
     {
-        private StudentVM _student;
+        private StudentVM _student = student;
 
         public StudentVM Student
         {

@@ -1,4 +1,4 @@
-﻿using CourseManagerDatabase.Entitys;
+﻿using CourseManagerDatabase.Entity;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using CourseManagerWPF.MVVM.ViewModels.Pages.Base;
 
@@ -14,15 +14,15 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages
         public CreatePageVM()
         {
             _course = new CourseVM(new CourseRecord());
-            _group = new GroupVM(new GroupRecord()); 
-            _student = new StudentVM(new StudentRecord()); 
-            _teacher = new TeacherVM(new TeacherRecord()); 
+            _group = new GroupVM(new GroupRecord());
+            _student = new StudentVM(new StudentRecord());
+            _teacher = new TeacherVM(new TeacherRecord());
         }
 
         public CourseVM Course
         {
             get => _course;
-            set => Set(ref  _course, value);
+            set => Set(ref _course, value);
         }
         public GroupVM Group
         {

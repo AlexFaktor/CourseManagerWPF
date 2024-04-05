@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CourseManagerDatabase.Entitys.Configurations
+namespace CourseManagerDatabase.Entity.Configurations
 {
     public class GroupConfiguration : IEntityTypeConfiguration<GroupRecord>
     {

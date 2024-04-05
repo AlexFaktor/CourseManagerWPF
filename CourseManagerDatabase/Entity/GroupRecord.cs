@@ -1,4 +1,4 @@
-﻿namespace CourseManagerDatabase.Entitys
+﻿namespace CourseManagerDatabase.Entity
 {
     public class GroupRecord
     {

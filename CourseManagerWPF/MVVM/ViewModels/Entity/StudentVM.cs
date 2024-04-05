@@ -1,4 +1,4 @@
-﻿using CourseManagerDatabase.Entitys;
+﻿using CourseManagerDatabase.Entity;
 using CourseManagerWPF.MVVM.ViewModels.Base;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Entitys

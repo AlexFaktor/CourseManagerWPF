@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CourseManagerDatabase.Entitys.Configurations
+namespace CourseManagerDatabase.Entity.Configurations
 {
-    public class StudentConfiguration : IEntityTypeConfiguration<StudentRecord>
+    public class TeacherConfiguration : IEntityTypeConfiguration<TeacherRecord>
     {
-        public void Configure(EntityTypeBuilder<StudentRecord> builder)
+        public void Configure(EntityTypeBuilder<TeacherRecord> builder)
         {
             builder.HasKey(s => s.Id);
 
@@ -24,9 +24,9 @@ namespace CourseManagerDatabase.Entitys.Configurations
             builder.Property(p => p.Email)
                 .HasMaxLength(255);
 
-            builder.HasOne(s => s.Group)
-                .WithMany(g => g.Students)
-                .HasForeignKey(s => s.GroupId);
+            builder.HasMany(s => s.Groups)
+                .WithOne(g => g.Teacher)
+                .HasForeignKey(g => g.TeacherId);
         }
     }
 }

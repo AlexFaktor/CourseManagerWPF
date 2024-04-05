@@ -1,7 +1,6 @@
 ﻿using CourseManagerDatabase.Database;
 using CourseManagerWPF.Database;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -12,8 +11,8 @@ namespace CourseManagerWPF
     /// </summary>
     public partial class App : Application
     {
-        public ManagerDbContext DbContext { get; set; }
-        public ManagerRepository DbRepository { get; set; }
+        public SchoolDbContext DbContext { get; set; }
+        public SchoolRepository DbRepository { get; set; }
         public CourseDatabase Database { get; set; }
 
         public ObservableCollection<CourseVM> Courses { get; set; }
@@ -23,16 +22,16 @@ namespace CourseManagerWPF
 
         public App()
         {
-            DbContext = new ManagerDbContext();
+            DbContext = new SchoolDbContext();
             DbContext.Database.EnsureCreated();
 
-            DbRepository = new ManagerRepository(DbContext);
+            DbRepository = new SchoolRepository(DbContext);
             Database = new CourseDatabase(DbRepository);
 
-            Courses = new ObservableCollection<CourseVM>( Database.GetCourseVMs());
-            Groups  = new ObservableCollection<GroupVM>( Database.GetGroupVMs());
-            Students = new ObservableCollection<StudentVM>( Database.GetStudentsVMs());
-            Teachers = new ObservableCollection<TeacherVM>( Database.GetTeacherVMs());
+            Courses = new ObservableCollection<CourseVM>(Database.GetCourseVMs());
+            Groups = new ObservableCollection<GroupVM>(Database.GetGroupVMs());
+            Students = new ObservableCollection<StudentVM>(Database.GetStudentsVMs());
+            Teachers = new ObservableCollection<TeacherVM>(Database.GetTeacherVMs());
         }
     }
 }

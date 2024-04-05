@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CourseManagerDatabase.Entitys
+﻿namespace CourseManagerDatabase.Entity
 {
     public class CourseRecord
     {

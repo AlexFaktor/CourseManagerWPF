@@ -1,12 +1,11 @@
 ﻿using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using CourseManagerWPF.MVVM.ViewModels.Pages.Base;
-using System.Collections.ObjectModel;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
 {
-    internal class GroupPageVM : PageVM
+    internal class GroupPageVM(GroupVM group) : PageVM
     {
-        private GroupVM _group;
+        private GroupVM _group = group;
 
         public GroupVM Group
         {

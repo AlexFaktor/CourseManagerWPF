@@ -1,11 +1,11 @@
-﻿using CourseManagerDatabase.Entitys;
-using CourseManagerDatabase.Entitys.Configurations;
+﻿using CourseManagerDatabase.Entity;
+using CourseManagerDatabase.Entity.Configurations;
 using CourseManagerDatabase.Tools;
 using Microsoft.EntityFrameworkCore;
 
 namespace CourseManagerDatabase.Database
 {
-    public class ManagerDbContext : DbContext
+    public class SchoolDbContext : DbContext
     {
         public DbSet<CourseRecord> Courses { get; set; }
         public DbSet<GroupRecord> Groups { get; set; }
