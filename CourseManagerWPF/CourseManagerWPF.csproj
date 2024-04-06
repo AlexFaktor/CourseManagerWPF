@@ -62,4 +62,9 @@
     <Resource Include="Resource\Image\ui\updating.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\DocumentСreator\" />
+    <Folder Include="Services\ScvManager\" />
+  </ItemGroup>
+
 </Project>

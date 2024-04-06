@@ -3,9 +3,9 @@ using CourseManagerWPF.MVVM.ViewModels.Entitys;
 
 namespace CourseManagerWPF.Database
 {
-    public class CourseDatabase(SchoolRepository db)
+    public class AppDatabase(SchoolRepository db)
     {
-        public SchoolRepository _db { get; set; } = db;
+        private readonly SchoolRepository _db = db;
 
         public List<CourseVM> GetCourseVMs()
         {
