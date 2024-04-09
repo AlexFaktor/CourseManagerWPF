@@ -56,11 +56,14 @@
                             </StackPanel>
                         </TabItem.Header>
                         
-                        <ListBox ItemsSource="{Binding Courses}">
+                        <ListBox x:Name="listCourses"
+                                 ItemsSource="{Binding Courses}"
+                                 SelectionChanged="ListBox_UnselectedCourse"
+                                 >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Course.Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -76,11 +79,14 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <ListBox ItemsSource="{Binding Groups}">
+                        <ListBox x:Name="listGroups" ItemsSource="{Binding Groups}"
+                                 
+                                 SelectionChanged="ListBox_UnselectedGroup"  VerticalAlignment="Bottom"
+                                 >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Group.Name }"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -96,11 +102,18 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <ListBox ItemsSource="{Binding Students}">
+                        <ListBox x:Name="listStudents" ItemsSource="{Binding Students}"
+                                 SelectionChanged="ListBox_UnselectedStudent"
+
+                                 >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Student.Name}"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="{Binding Student.Surname}"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="{Binding Student.Patronymic}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -116,11 +129,17 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <ListBox ItemsSource="{Binding Teachers}">
+                        <ListBox x:Name="listTeachers" ItemsSource="{Binding Teachers}"
+                                 SelectionChanged="ListBox_UnselectedTeacher"
+                                 >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="{Binding Teacher.Name}"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="{Binding Teacher.Surname}"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="{Binding Teacher.Patronymic}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

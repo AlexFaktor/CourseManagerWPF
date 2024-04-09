@@ -158,7 +158,9 @@
                 <ComboBox 
                     Width="100"
                     Margin="5,0,0,0" 
-                    ItemsSource="{Binding Groups}">
+                    ItemsSource="{Binding Groups}"
+                    SelectedValue="{Binding Student.Student.Group}"
+                    SelectedValuePath="Group">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Group.Name}"/>
@@ -173,7 +175,12 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-
+            <Button Margin="10" Content="Delete" Width="80" Height="40" 
+                Command="{Binding Commands.DeleteStudent}" 
+                CommandParameter="{Binding Student}"/>
+            <Button Margin="10" Content="Update" Width="80" Height="40" 
+                Command="{Binding Commands.UpdateStudent}" 
+                CommandParameter="{Binding Student}"/>
         </StackPanel>
 
     </Grid>

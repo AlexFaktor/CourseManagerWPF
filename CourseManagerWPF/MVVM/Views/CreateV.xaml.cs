@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using CourseManagerWPF.MVVM.ViewModels.Pages;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CourseManagerWPF.MVVM.Views
 {
@@ -23,6 +12,38 @@ namespace CourseManagerWPF.MVVM.Views
         public CreateV()
         {
             InitializeComponent();
+        }
+
+        private void Button_PreviewMouseDownCourse(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.CommandParameter = (button.DataContext as CreatePageVM)!.GetCourse;
+            }
+        }
+
+        private void Button_PreviewMouseDownGroup(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.CommandParameter = (button.DataContext as CreatePageVM)!.GetGroup;
+            }
+        }
+
+        private void Button_PreviewMouseDownStudent(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.CommandParameter = (button.DataContext as CreatePageVM)!.GetStudent;
+            }
+        }
+
+        private void Button_PreviewMouseDownTeacher(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.CommandParameter = (button.DataContext as CreatePageVM)!.GetTeacher;
+            }
         }
     }
 }

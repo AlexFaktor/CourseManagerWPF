@@ -38,101 +38,100 @@ d:DataContext="{d:DesignInstance vm:TeacherPageVM, IsDesignTimeCreatable=False }
 
             <StackPanel Orientation="Horizontal">
                 <Image
-        Width="18"
-        Height="18"
-        Margin="5"
-        Source="{StaticResource IconPencil}" />
+                    Width="18"
+                    Height="18"
+                    Margin="5"
+                    Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-        <Run FontWeight="Bold" Text="Name:" />
+                    <Run FontWeight="Bold" Text="Name:" />
                 </TextBlock>
                 <TextBox
-        Width="auto"
-        MinWidth="100"
-        Margin="10,0,0,0"
-        Background="White"
-        BorderThickness="0"
-        FontSize="20"
-        Text="{Binding Teacher.Teacher.Name }" />
+                    Width="auto"
+                    MinWidth="100"
+                    Margin="10,0,0,0"
+                    Background="White"
+                    BorderThickness="0"
+                    FontSize="20"
+                    Text="{Binding Teacher.Teacher.Name }" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image
-        Width="18"
-        Height="18"
-        Margin="5"
-        Source="{StaticResource IconPencil}" />
+                    Width="18"
+                    Height="18"
+                    Margin="5"
+                    Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-        <Run FontWeight="Bold" Text="Surname:" />
+                    <Run FontWeight="Bold" Text="Surname:" />
                 </TextBlock>
                 <TextBox
-        Width="auto"
-        MinWidth="100"
-        Margin="10,0,0,0"
-        Background="White"
-        BorderThickness="0"
-        FontSize="20"
-        Text="{Binding Teacher.Teacher.Surname }" />
+                    Width="auto"
+                    MinWidth="100"
+                    Margin="10,0,0,0"
+                    Background="White"
+                    BorderThickness="0"
+                    FontSize="20"
+                    Text="{Binding Teacher.Teacher.Surname }" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image
-        Width="18"
-        Height="18"
-        Margin="5"
-        Source="{StaticResource IconPencil}" />
+                    Width="18"
+                    Height="18"
+                    Margin="5"
+                    Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-        <Run FontWeight="Bold" Text="Patronymic:" />
+                    <Run FontWeight="Bold" Text="Patronymic:" />
                 </TextBlock>
                 <TextBox
-        Width="auto"
-        MinWidth="100"
-        Margin="10,0,0,0"
-        Background="White"
-        BorderThickness="0"
-        FontSize="20"
-        Text="{Binding Teacher.Teacher.Patronymic }" />
+                    Width="auto"
+                    MinWidth="100"
+                    Margin="10,0,0,0"
+                    Background="White"
+                    BorderThickness="0"
+                    FontSize="20"
+                    Text="{Binding Teacher.Teacher.Patronymic }" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image
-        Width="18"
-        Height="18"
-        Margin="5"
-        Source="{StaticResource IconPencil}" />
+                    Width="18"
+                    Height="18"
+                    Margin="5"
+                    Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-        <Run FontWeight="Bold" Text="Birthday:" />
+                    <Run FontWeight="Bold" Text="Birthday:" />
                 </TextBlock>
                 <DatePicker
-        BorderThickness="0"
-        FontSize="18"
-        SelectedDate="{Binding Teacher.Teacher.Birthday, UpdateSourceTrigger=PropertyChanged}" />
+                    BorderThickness="0"
+                    FontSize="18"
+                    SelectedDate="{Binding Teacher.Teacher.Birthday, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Image
-        Width="18"
-        Height="18"
-        Margin="5"
-        Source="{StaticResource IconPencil}" />
+                    Width="18"
+                    Height="18"
+                    Margin="5"
+                    Source="{StaticResource IconPencil}" />
                 <TextBlock MinWidth="120" FontSize="20">
-        <Run FontWeight="Bold" Text="Email:" />
+                    <Run FontWeight="Bold" Text="Email:" />
                 </TextBlock>
                 <TextBox
-        Width="auto"
-        MinWidth="100"
-        Margin="10,0,0,0"
-        Background="White"
-        BorderThickness="0"
-        FontSize="20"
-        Text="{Binding Teacher.Teacher.Email }" />
-            </StackPanel>
+                    Width="auto"
+                    MinWidth="100"
+                    Margin="10,0,0,0"
+                    Background="White"
+                    BorderThickness="0"
+                    FontSize="20"
+                    Text="{Binding Teacher.Teacher.Email }" />
+                
+        </StackPanel>
             <ListBox Height="100" Margin="8" ItemsSource="{Binding Teacher.Teacher.Groups}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Name}"></TextBlock>
-                            <TextBlock Text="{Binding Surname}"></TextBlock>
-                            <TextBlock Text="{Binding Teacher}"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -140,7 +139,12 @@ d:DataContext="{d:DesignInstance vm:TeacherPageVM, IsDesignTimeCreatable=False }
         </StackPanel>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-
+            <Button Margin="10" Content="Delete" Width="80" Height="40" 
+                Command="{Binding Commands.DeleteTeacher}" 
+                CommandParameter="{Binding Teacher}"/>
+            <Button Margin="10" Content="Update" Width="80" Height="40" 
+                Command="{Binding Commands.UpdateTeacher}" 
+                CommandParameter="{Binding Teacher}"/>
         </StackPanel>
     </Grid>
 </UserControl>

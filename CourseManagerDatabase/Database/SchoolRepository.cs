@@ -1,5 +1,4 @@
 ﻿using CourseManagerDatabase.Database.Services;
-using CourseManagerDatabase.Entity;
 
 namespace CourseManagerDatabase.Database
 {

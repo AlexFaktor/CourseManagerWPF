@@ -59,10 +59,18 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Course.Course.Name}" />
+                            Text="{Binding Course.Course.Name, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
-                    <Button Margin="30" Content="Add course" Width="100" Height="40"></Button>
+                    <Button 
+                        Margin="30" 
+                        Content="Add course"
+                        Width="100" 
+                        Height="40"
+                        Command="{Binding Commands.AddCourse}"
+                        CommandParameter="{Binding GetCourse}"
+                        PreviewMouseDown="Button_PreviewMouseDownCourse"/>
+                    
                 </StackPanel>
              
 
@@ -104,7 +112,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Group.Group.Name}" />
+                            Text="{Binding Group.Group.Name, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="1">
@@ -119,10 +127,13 @@
                         <ComboBox 
                             Width="100"
                             Margin="5,0,0,0" 
-                            ItemsSource="{Binding Courses}">
+                            Text="Select course"
+                            ItemsSource="{Binding Courses}"
+                            SelectedValue="{Binding Group.Group.Course}"
+                            SelectedValuePath="Course">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Course.Name}"/>
+                                    <TextBlock Text="{Binding Course.Name, UpdateSourceTrigger=PropertyChanged}"/>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
 
@@ -142,16 +153,26 @@
                         <ComboBox 
                             Width="100"
                             Margin="5,0,0,0" 
-                            ItemsSource="{Binding Teachers}">       
+                            Text="Select teacher"
+                            ItemsSource="{Binding Teachers}"
+                            SelectedValue="{Binding Group.Group.Teacher}"
+                            SelectedValuePath="Teacher">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Teacher.Name}"/>
+                                    <TextBlock Text="{Binding Teacher.Name, UpdateSourceTrigger=PropertyChanged}"/>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                     </StackPanel>
 
-                    <Button Margin="30" Content="Add group" Width="100" Height="40"></Button>
+                    <Button 
+                        Margin="30" 
+                        Content="Add group" 
+                        Width="100" 
+                        Height="40"
+                        Command="{Binding Commands.AddGroup}"
+                        CommandParameter="{Binding GetGroup}"
+                        PreviewMouseDown="Button_PreviewMouseDownGroup"/>
                 </StackPanel>
 
             </TabItem>
@@ -192,7 +213,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Student.Student.Name }" />   
+                            Text="{Binding Student.Student.Name , UpdateSourceTrigger=PropertyChanged}" />   
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -211,7 +232,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Student.Student.Surname }" />        
+                            Text="{Binding Student.Student.Surname , UpdateSourceTrigger=PropertyChanged}" />        
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -230,7 +251,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Student.Student.Patronymic }" /> 
+                            Text="{Binding Student.Student.Patronymic , UpdateSourceTrigger=PropertyChanged}" /> 
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -264,7 +285,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Student.Student.Email }" />
+                            Text="{Binding Student.Student.Email , UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -283,7 +304,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Student.Student.Rating }" />
+                            Text="{Binding Student.Student.Rating , UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="1">
@@ -298,7 +319,9 @@
                         <ComboBox 
                             Width="100"
                             Margin="5,0,0,0" 
-                            ItemsSource="{Binding Groups}">
+                            ItemsSource="{Binding Groups}"
+                            SelectedValue="{Binding Student.Student.Group}"
+                            SelectedValuePath="Group">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Group.Name}"/>
@@ -308,7 +331,11 @@
 
                     </StackPanel>
 
-                    <Button Margin="30" Content="Add student" Width="100" Height="40"></Button>
+                    <Button Margin="30" Content="Add student" Width="100" 
+                            Height="40"
+                            Command="{Binding Commands.AddStudent}"
+                            CommandParameter="{Binding GetStudent}"
+                            PreviewMouseDown="Button_PreviewMouseDownStudent"/>
 
                 </StackPanel>
 
@@ -350,7 +377,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Teacher.Teacher.Name }" />
+                            Text="{Binding Teacher.Teacher.Name , UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -369,7 +396,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Teacher.Teacher.Surname }" />
+                            Text="{Binding Teacher.Teacher.Surname ,UpdateSourceTrigger=PropertyChanged }" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -388,7 +415,7 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Teacher.Teacher.Patronymic }" />
+                            Text="{Binding Teacher.Teacher.Patronymic, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -422,10 +449,13 @@
                             Background="White"
                             BorderThickness="0"
                             FontSize="20"
-                            Text="{Binding Teacher.Teacher.Email }" />
+                            Text="{Binding Teacher.Teacher.Email , UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
 
-                    <Button Margin="30" Content="Add teacher" Width="100" Height="40"></Button>
+                    <Button Margin="30" Content="Add teacher" Width="100" Height="40"
+                            Command="{Binding Commands.AddTeacher}"
+                            CommandParameter="{Binding GetTeacher}"
+                            PreviewMouseDown="Button_PreviewMouseDownTeacher"/>
 
                 </StackPanel>
 

@@ -1,11 +1,23 @@
-﻿using CourseManagerWPF.MVVM.ViewModels.Entitys;
+﻿using CourseManagerDatabase.Entity.Extensions;
+using CourseManagerWPF.Commands;
+using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using CourseManagerWPF.MVVM.ViewModels.Pages.Base;
+using System.Windows;
 
 namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
 {
-    internal class StudentPageVM(StudentVM student) : PageVM
+    internal class StudentPageVM : PageVM
     {
-        private StudentVM _student = student;
+        private StudentVM _student;
+
+        public AppCommands Commands { get; set; }
+        public StudentPageVM(StudentVM student)
+        {
+            _student = new(student.Student.GetCopy());
+
+            var app = (App)Application.Current;
+            Commands = app.Commands;
+        }
 
         public StudentVM Student
         {
