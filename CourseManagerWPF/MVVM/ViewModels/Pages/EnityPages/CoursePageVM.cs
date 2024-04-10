@@ -9,7 +9,7 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
     internal class CoursePageVM : PageVM
     {
         private CourseVM _course;
-        public AppCommands Commands { get; set; }
+        public AppCommandsBinding Commands { get; set; }
 
         public CoursePageVM(CourseVM course)
         {

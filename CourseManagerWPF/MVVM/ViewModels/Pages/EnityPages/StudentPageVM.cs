@@ -10,7 +10,7 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
     {
         private StudentVM _student;
 
-        public AppCommands Commands { get; set; }
+        public AppCommandsBinding Commands { get; set; }
         public StudentPageVM(StudentVM student)
         {
             _student = new(student.Student.GetCopy());

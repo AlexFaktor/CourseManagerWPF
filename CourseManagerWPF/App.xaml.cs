@@ -15,7 +15,8 @@ namespace CourseManagerWPF
         public SchoolDbContext DbContext { get; set; }
         public SchoolRepository DbRepository { get; set; }
         public AppDatabase Database { get; set; }
-        public AppCommands Commands { get; set; }
+        public AppCommands AppCommands { get; set; }
+        public AppCommandsBinding Commands { get; set; }
 
         public ObservableCollection<CourseVM> Courses { get; set; }
         public ObservableCollection<GroupVM> Groups { get; set; }
@@ -35,7 +36,8 @@ namespace CourseManagerWPF
             Students = new ObservableCollection<StudentVM>(Database.GetStudentsVMs());
             Teachers = new ObservableCollection<TeacherVM>(Database.GetTeacherVMs());
 
-            Commands = new AppCommands(DbContext, DbRepository, Database, Courses!, Groups!, Students!, Teachers!);
+            AppCommands = new AppCommands(DbContext, DbRepository, Database, Courses!, Groups!, Students!, Teachers!);
+            Commands = new AppCommandsBinding(AppCommands);
         }
 
         public void GetData()

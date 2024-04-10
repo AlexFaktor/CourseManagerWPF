@@ -65,7 +65,6 @@
                     <Run FontWeight="Bold" Text="Course &gt;&gt;" />
                 </TextBlock>
                 <ComboBox 
-                    Text="{Binding Group.Group.Course.Name}"
                     Width="100"
                     Margin="5,0,0,0" 
                     ItemsSource="{Binding Courses}"
@@ -91,7 +90,6 @@
                     <Run FontWeight="Bold" Text="Teacher &gt;&gt;" />
                 </TextBlock>
                 <ComboBox 
-                    Text="{Binding Group.Group.Teacher.Name}"
                     Width="100"
                     Margin="5,0,0,0" 
                     ItemsSource="{Binding Teachers}"
@@ -126,7 +124,15 @@
             <Button Margin="10" Content="Update" Width="80" Height="40" 
                     Command="{Binding Commands.UpdateGroup}" 
                     CommandParameter="{Binding Group}"/>
+            <Button Margin="10" Content="Import" Width="80" Height="40" 
+                    Command="{Binding Commands.ImportGroup}" 
+                    CommandParameter="{Binding Group}"/>
+            <Button Margin="10" Content="Export" Width="80" Height="40" 
+                    Command="{Binding Commands.ExportGroup}" 
+                    CommandParameter="{Binding Group}"/>
+            
         </StackPanel>
 
     </Grid>
 </UserControl>
+ 

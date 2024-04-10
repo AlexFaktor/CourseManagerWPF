@@ -15,7 +15,8 @@ namespace CourseManagerDatabase.Entity.Configurations
 
             builder.HasMany(c => c.Groups)
                 .WithOne(g => g.Course)
-                .HasForeignKey(g => g.CourseId);
+                .HasForeignKey(g => g.CourseId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

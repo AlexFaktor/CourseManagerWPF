@@ -1,6 +1,4 @@
-﻿using CourseManagerWPF.Commands.Base;
-
-namespace CourseManagerWPF.Commands
+﻿namespace CourseManagerWPF.Commands.Base
 {
     internal class RelayCommand : Command
     {

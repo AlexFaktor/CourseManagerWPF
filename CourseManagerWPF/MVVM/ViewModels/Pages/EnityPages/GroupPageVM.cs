@@ -10,7 +10,7 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages
     {
         private GroupVM _group;
 
-        public AppCommands Commands { get; set; }
+        public AppCommandsBinding Commands { get; set; }
         public GroupPageVM(GroupVM group)
         {
             _group = new(group.Group.GetCopy());

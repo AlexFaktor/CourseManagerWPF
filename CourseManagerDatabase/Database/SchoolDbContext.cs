@@ -23,6 +23,6 @@ namespace CourseManagerDatabase.Database
         }
 
         readonly string path = FileHelper.GetDbPath();
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite($"Data Source={path + "CourseManager.db"}");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite($"Data Source={path + "CourseManager.db"};Foreign Keys=False");
     }
 }

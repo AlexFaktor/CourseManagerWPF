@@ -13,7 +13,7 @@ namespace CourseManagerWPF.MVVM.ViewModels.Pages
         private StudentVM _student;
         private TeacherVM _teacher;
 
-        public AppCommands Commands { get; set; }
+        public AppCommandsBinding Commands { get; set; }
 
         public CreatePageVM()
         {
