@@ -2,10 +2,12 @@
 using CourseManagerWPF.Database;
 using CourseManagerWPF.MVVM.ViewModels.Entity.Extensions;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
+using CourseManagerWPF.Services.DocumentСreator;
 using CourseManagerWPF.Services.ScvManager;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Runtime.Intrinsics.Arm;
 
 namespace CourseManagerWPF.Commands
 {
@@ -87,7 +89,7 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
-        public void ExportGroup(GroupVM group) 
+        public void ExportGroup(GroupVM groupVM) 
         {
             SaveFileDialog saveFileDialog = new()
             {
@@ -98,17 +100,24 @@ namespace CourseManagerWPF.Commands
             {
                 string selectedFilePath = saveFileDialog.FileName;
                 string extension = Path.GetExtension(selectedFilePath).Trim();
-
                 switch (extension)
                 {
                     case ".docx":
-                        
+                        var group = groupVM.Group;
+                        DocumentCreator.CreateStudentTableDocx(group.Students.ToList(),
+                                                               group.Course?.Name == null ? "No name" : group.Course.Name,
+                                                               group.Name,
+                                                               selectedFilePath);
                         break;
                     case ".pdf":
-                        
+                        var groupp = groupVM.Group;
+                        DocumentCreator.CreateStudentTablePdf(groupp.Students.ToList(),
+                                                               groupp.Course?.Name == null ? "No name" : groupp.Course.Name,
+                                                               groupp.Name,
+                                                               selectedFilePath);
                         break;
                     case ".csv":
-                        CsvManager.WriteStudents(selectedFilePath, group);
+                        CsvManager.WriteStudents(selectedFilePath, groupVM);
                         break;
                     default:
                         break;
@@ -126,7 +135,7 @@ namespace CourseManagerWPF.Commands
                 group.CleanStudents();
                 var students = CsvManager.ReadStudents(openFileDialog.FileName, group);
                 foreach (var student in students)
-                    AddStudent(student);
+                    AddStudent(student);    
             }
         }
 
