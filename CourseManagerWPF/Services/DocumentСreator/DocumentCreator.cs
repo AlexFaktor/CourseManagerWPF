@@ -1,7 +1,7 @@
 ﻿using CourseManagerDatabase.Entity;
-using Xceed.Words.NET;
 using PdfSharpCore.Drawing;
 using PdfSharpCore.Pdf;
+using Xceed.Words.NET;
 
 namespace CourseManagerWPF.Services.DocumentСreator
 {
@@ -33,57 +33,64 @@ namespace CourseManagerWPF.Services.DocumentСreator
             doc.Save();
         }
 
-        
 
-public static void CreateStudentTablePdf(List<StudentRecord> students, string courseName, string groupName, string filePath)
-    {
-        using (PdfDocument document = new PdfDocument())
+
+        public static void CreateStudentTablePdf(List<StudentRecord> students, string courseName, string groupName, string filePath)
         {
-            PdfPage page = document.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(page);
-            XFont font = new XFont("Arial", 12);
+            using (PdfDocument document = new PdfDocument())
+            {
+                PdfPage page = document.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+                XFont font = new XFont("Arial", 12);
 
-            XRect courseRect = new XRect(10, 10, page.Width.Point - 20, 50);
-            gfx.DrawRectangle(XBrushes.Transparent, courseRect);
-            gfx.DrawString(courseName, font, XBrushes.Black, courseRect, XStringFormats.Center);
+                XRect courseRect = new XRect(10, 10, page.Width.Point - 20, 50);
+                gfx.DrawRectangle(XBrushes.Transparent, courseRect);
+                gfx.DrawString(courseName, font, XBrushes.Black, courseRect, XStringFormats.Center);
 
-            XRect groupRect = new XRect(10, 70, page.Width.Point - 20, 30);
-            gfx.DrawRectangle(XBrushes.Transparent, groupRect);
-            gfx.DrawString(groupName, font, XBrushes.Black, groupRect, XStringFormats.Center);
+                XRect groupRect = new XRect(10, 70, page.Width.Point - 20, 30);
+                gfx.DrawRectangle(XBrushes.Transparent, groupRect);
+                gfx.DrawString(groupName, font, XBrushes.Black, groupRect, XStringFormats.Center);
 
-            XRect tableRect = new XRect(10, 110, page.Width.Point - 20, page.Height.Point - 120);
-            DrawTable(gfx, font, tableRect, students);
+                XRect tableRect = new XRect(10, 110, page.Width.Point - 20, page.Height.Point - 120);
+                DrawTable(gfx, font, tableRect, students);
 
-            document.Save(filePath);
+                document.Save(filePath);
+            }
+        }
+
+        private static void DrawTable(XGraphics gfx, XFont font, XRect rect, List<StudentRecord> students)
+        {
+            const int headerRows = 1;
+            const int cols = 3;
+            double availableHeight = rect.Height - 10; // Leaving some margin at the bottom
+            double rowHeight = availableHeight / (students.Count + headerRows); // Header row + data rows
+            double colWidth = rect.Width / cols;
+
+            XPen pen = new XPen(XColors.Black, 0.5);
+
+            for (int i = 0; i <= headerRows; i++)
+            {
+                gfx.DrawLine(pen, rect.Left, rect.Top + i * rowHeight, rect.Right, rect.Top + i * rowHeight);
+            }
+
+            for (int i = 0; i <= cols; i++)
+            {
+                gfx.DrawLine(pen, rect.Left + i * colWidth, rect.Top, rect.Left + i * colWidth, rect.Bottom);
+            }
+
+            // Drawing header row
+            gfx.DrawString("Name", font, XBrushes.Black, new XRect(rect.Left, rect.Top, colWidth, rowHeight), XStringFormats.Center);
+            gfx.DrawString("Surname", font, XBrushes.Black, new XRect(rect.Left + colWidth, rect.Top, colWidth, rowHeight), XStringFormats.Center);
+            gfx.DrawString("Patronymic", font, XBrushes.Black, new XRect(rect.Left + 2 * colWidth, rect.Top, colWidth, rowHeight), XStringFormats.Center);
+
+            // Drawing data rows
+            for (int i = 0; i < students.Count; i++)
+            {
+                var student = students[i];
+                gfx.DrawString(student.Name, font, XBrushes.Black, new XRect(rect.Left, rect.Top + (i + 1) * rowHeight, colWidth, rowHeight), XStringFormats.Center);
+                gfx.DrawString(student.Surname, font, XBrushes.Black, new XRect(rect.Left + colWidth, rect.Top + (i + 1) * rowHeight, colWidth, rowHeight), XStringFormats.Center);
+                gfx.DrawString(student.Patronymic, font, XBrushes.Black, new XRect(rect.Left + 2 * colWidth, rect.Top + (i + 1) * rowHeight, colWidth, rowHeight), XStringFormats.Center);
+            }
         }
     }
-
-    private static void DrawTable(XGraphics gfx, XFont font, XRect rect, List<StudentRecord> students)
-    {
-        const int rows = 1 + 1; // Header row + data rows
-        const int cols = 3;
-        double rowHeight = rect.Height / rows;
-        double colWidth = rect.Width / cols;
-
-        XPen pen = new XPen(XColors.Black, 0.5);
-
-        for (int i = 0; i <= rows; i++)
-        {
-            gfx.DrawLine(pen, rect.Left, rect.Top + i * rowHeight, rect.Right, rect.Top + i * rowHeight);
-        }
-
-        for (int i = 0; i <= cols; i++)
-        {
-            gfx.DrawLine(pen, rect.Left + i * colWidth, rect.Top, rect.Left + i * colWidth, rect.Bottom);
-        }
-
-        for (int i = 0; i < students.Count; i++)
-        {
-            var student = students[i];
-            gfx.DrawString(student.Name, font, XBrushes.Black, new XRect(rect.Left, rect.Top + (i + 1) * rowHeight, colWidth, rowHeight), XStringFormats.Center);
-            gfx.DrawString(student.Surname, font, XBrushes.Black, new XRect(rect.Left + colWidth, rect.Top + (i + 1) * rowHeight, colWidth, rowHeight), XStringFormats.Center);
-            gfx.DrawString(student.Patronymic, font, XBrushes.Black, new XRect(rect.Left + 2 * colWidth, rect.Top + (i + 1) * rowHeight, colWidth, rowHeight), XStringFormats.Center);
-        }
-    }
-}
 }
