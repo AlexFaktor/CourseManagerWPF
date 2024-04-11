@@ -46,13 +46,13 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
-        public void UpdateCourse(CourseVM course)
+        public void UpdateCourse(CourseVM courseVM)
         {
-            _dbRepository.CourseService.DeleteCourse(course.Course);
-            _dbRepository.CourseService.AddCourseRecord(course.Course);
+            var newCourse = courseVM.Course;
+            var course = _courses.First(c => c.Course.Id == courseVM.Course.Id);
 
-            _courses.Remove(_courses.First(c => c.Course.Id == course.Course.Id));
-            _courses.Add(course);
+            course.Course.Name = newCourse.Name;
+            course.Course.Groups = newCourse.Groups;
 
             _dbRepository.DbSaveChanges();
         }
@@ -72,13 +72,16 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
-        public void UpdateGroup(GroupVM group)
+        public void UpdateGroup(GroupVM groupVM)
         {
-            _dbRepository.GroupService.DeleteGroup(group.Group);
-            _dbRepository.GroupService.AddGroupRecord(group.Group);
+            var newGroup = groupVM.Group;
+            var group = _groups.First(c => c.Group.Id == groupVM.Group.Id);
 
-            _groups.Remove(_groups.First(g => g.Group.Id == group.Group.Id));
-            _groups.Add(group);
+            group.Group.Name = newGroup.Name;
+            group.Group.Course = newGroup.Course;
+            group.Group.CourseId = newGroup.CourseId;
+            group.Group.Teacher = newGroup.Teacher;
+            group.Group.TeacherId = newGroup.TeacherId;
 
             _dbRepository.DbSaveChanges();
         }
@@ -134,8 +137,8 @@ namespace CourseManagerWPF.Commands
             {
                 group.CleanStudents();
                 var students = CsvManager.ReadStudents(openFileDialog.FileName, group);
-                foreach ( var student in students )
-                    AddStudent(new StudentVM( student.Student));
+                foreach (var student in students)
+                    AddStudent(new StudentVM(student.Student));
             }
         }
 
@@ -147,13 +150,19 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
-        public void UpdateStudent(StudentVM student)
+        public void UpdateStudent(StudentVM studentVM)
         {
-            _dbRepository.StudentService.DeleteStudent(student.Student);
-            _dbRepository.StudentService.AddStudentRecord(student.Student);
+            var newStudent = studentVM.Student;
+            var student = _students.First(s => s.Student.Id == studentVM.Student.Id);
 
-            _students.Remove(_students.First(s => s.Student.Id == student.Student.Id));
-            _students.Add(student);
+            student.Student.Name = newStudent.Name;
+            student.Student.Surname = newStudent.Surname;
+            student.Student.Patronymic = newStudent.Patronymic;
+            student.Student.Birthday = newStudent.Birthday;
+            student.Student.Email = newStudent.Email;
+            student.Student.Rating = newStudent.Rating;
+            student.Student.Group = newStudent.Group;
+            student.Student.GroupId = newStudent.GroupId;   
 
             _dbRepository.DbSaveChanges();
         }
@@ -173,13 +182,16 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
-        public void UpdateTeacher(TeacherVM teacher)
+        public void UpdateTeacher(TeacherVM teacherVM)
         {
-            _dbRepository.TeacherService.DeleteTeacher(teacher.Teacher);
-            _dbRepository.TeacherService.AddTeacherRecord(teacher.Teacher);
+            var newTeacher = teacherVM.Teacher;
+            var teacher = _teachers.First(t => t.Teacher.Id == teacherVM.Teacher.Id);
 
-            _teachers.Remove(_teachers.First(s => s.Teacher.Id == teacher.Teacher.Id));
-            _teachers.Add(teacher);
+            teacher.Teacher.Name = newTeacher.Name;
+            teacher.Teacher.Surname = newTeacher.Surname;
+            teacher.Teacher.Patronymic = newTeacher.Patronymic;
+            teacher.Teacher.Birthday = newTeacher.Birthday;
+            teacher.Teacher.Email = newTeacher.Email;
 
             _dbRepository.DbSaveChanges();
         }
