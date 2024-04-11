@@ -6,6 +6,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using System.Globalization;
 using System.IO;
+using System.Windows;
 
 namespace CourseManagerWPF.Services.ScvManager
 {
@@ -13,6 +14,9 @@ namespace CourseManagerWPF.Services.ScvManager
     {
         public static List<StudentVM> ReadStudents(string filePath, GroupVM group)
         {
+            var app = (App)Application.Current;
+            group = app.Groups.First(g => g.Group.Id == group.Group.Id);
+
             List<StudentVM> students = [];
 
             using var reader = new StreamReader(filePath);

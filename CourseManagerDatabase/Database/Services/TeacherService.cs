@@ -5,7 +5,7 @@ namespace CourseManagerDatabase.Database.Services
     public class TeacherService(SchoolDbContext db)
     {
         private readonly SchoolDbContext _db = db;
-        public void AddTeacher(TeacherRecord teacherRecord) => _db.Teachers.Add(teacherRecord);
+        public void AddTeacherRecord(TeacherRecord teacherRecord) => _db.Teachers.Add(teacherRecord);
 
         public List<TeacherRecord> GetTeachers() => [.. _db.Teachers];
 
@@ -14,7 +14,7 @@ namespace CourseManagerDatabase.Database.Services
             if (_db.Teachers.Any(c => c.Id == teacherRecord.Id))
             {
                 DeleteTeacher(teacherRecord);
-                AddTeacher(teacherRecord);
+                AddTeacherRecord(teacherRecord);
                 return true;
             }
             return false;

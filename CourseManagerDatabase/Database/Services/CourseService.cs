@@ -6,7 +6,7 @@ namespace CourseManagerDatabase.Database.Services
     {
         private readonly SchoolDbContext _db = db;
 
-        public void AddCourse(CourseRecord courseRecord) => _db.Courses.Add(courseRecord);
+        public void AddCourseRecord(CourseRecord courseRecord) => _db.Courses.Add(courseRecord);
 
         public List<CourseRecord> GetCourses() => [.. _db.Courses];
 
@@ -15,7 +15,7 @@ namespace CourseManagerDatabase.Database.Services
             if (_db.Courses.Any(c => c.Id == courseRecord.Id))
             {
                 DeleteCourse(courseRecord);
-                AddCourse(courseRecord);
+                AddCourseRecord(courseRecord);
                 return true;
             }
             return false;
