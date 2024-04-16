@@ -43,7 +43,8 @@ namespace CourseManagerWPF
                     vm.Page = new CreatePageVM();
             }
         }
-        
+
+
         private void ListBox_UnselectedGroup(object sender, RoutedEventArgs e)
         {
             if (sender is ListBox listGroups && DataContext is MainVM vm)
@@ -77,10 +78,14 @@ namespace CourseManagerWPF
             }
         }
 
-        private void ListBox_LostFocus(object sender, RoutedEventArgs e)
+        private void ListBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(sender is ListBox listBox)
+            if (e.Key == Key.Q  && sender is ListBox listBox)
+            {
                 listBox.SelectedItem = null;
+                listBox.SelectedItem = null;
+                listBox.SelectedItem = null;
+            }
         }
     }
 }
