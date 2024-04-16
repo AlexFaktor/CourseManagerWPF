@@ -1,9 +1,7 @@
 ﻿using CourseManagerDatabase.Database;
 using CourseManagerWPF.Database;
-using CourseManagerWPF.MVVM.Models;
 using CourseManagerWPF.MVVM.ViewModels.Entity.Extensions;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
-using CourseManagerWPF.MVVM.Views.EntityViews;
 using CourseManagerWPF.Services.DocumentСreator;
 using CourseManagerWPF.Services.ScvManager;
 using Microsoft.Win32;
@@ -41,6 +39,9 @@ namespace CourseManagerWPF.Commands
 
         public void AddCourse(CourseVM course)
         {
+            if (!DataValidator.IsCourseValid(course))
+                return;
+
             course.Course.Id = Guid.NewGuid();
             _dbRepository.CourseService.AddCourseRecord(course.Course);
             _courses.Add(course);
@@ -49,6 +50,9 @@ namespace CourseManagerWPF.Commands
         }
         public void UpdateCourse(CourseVM courseVM)
         {
+            if (!DataValidator.IsCourseValid(courseVM))
+                return;
+
             var newCourse = courseVM.Course;
             var course = _courses.First(c => c.Course.Id == courseVM.Course.Id);
 
@@ -68,6 +72,9 @@ namespace CourseManagerWPF.Commands
 
         public void AddGroup(GroupVM group)
         {
+            if (!DataValidator.IsGroupValid(group))
+                return;
+
             group.Group.Id = Guid.NewGuid();
             _dbRepository.GroupService.AddGroupRecord(group.Group);
             _groups.Add(group);
@@ -76,6 +83,9 @@ namespace CourseManagerWPF.Commands
         }
         public void UpdateGroup(GroupVM groupVM)
         {
+            if (!DataValidator.IsGroupValid(groupVM))
+                return;
+
             var newGroup = groupVM.Group;
             var group = _groups.First(c => c.Group.Id == groupVM.Group.Id);
 
@@ -147,6 +157,9 @@ namespace CourseManagerWPF.Commands
 
         public void AddStudent(StudentVM student)
         {
+            if (!DataValidator.IsStudentValid(student))
+                return;
+
             student.Student.Id = Guid.NewGuid();
             _dbRepository.StudentService.AddStudentRecord(student.Student);
             _students.Add(student);
@@ -155,6 +168,9 @@ namespace CourseManagerWPF.Commands
         }
         public void UpdateStudent(StudentVM studentVM)
         {
+            if (!DataValidator.IsStudentValid(studentVM))
+                return;
+
             var newStudent = studentVM.Student;
             var student = _students.First(s => s.Student.Id == studentVM.Student.Id);
 
@@ -165,7 +181,7 @@ namespace CourseManagerWPF.Commands
             student.Student.Email = newStudent.Email;
             student.Student.Rating = newStudent.Rating;
             student.Student.Group = newStudent.Group;
-            student.Student.GroupId = newStudent.GroupId;   
+            student.Student.GroupId = newStudent.GroupId;
 
             _dbRepository.DbSaveChanges();
             studentVM.ViewModelChange();
@@ -180,6 +196,9 @@ namespace CourseManagerWPF.Commands
 
         public void AddTeacher(TeacherVM teacher)
         {
+            if (!DataValidator.IsTeacherValid(teacher))
+                return;
+
             teacher.Teacher.Id = Guid.NewGuid();
             _dbRepository.TeacherService.AddTeacherRecord(teacher.Teacher);
             _teachers.Add(teacher);
@@ -188,6 +207,9 @@ namespace CourseManagerWPF.Commands
         }
         public void UpdateTeacher(TeacherVM teacherVM)
         {
+            if (!DataValidator.IsTeacherValid(teacherVM))
+                return;
+
             var newTeacher = teacherVM.Teacher;
             var teacher = _teachers.First(t => t.Teacher.Id == teacherVM.Teacher.Id);
 
