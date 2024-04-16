@@ -1,14 +1,16 @@
-﻿<UserControl x:Class="CourseManagerWPF.MVVM.Views.EntityViews.StudentV"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CourseManagerWPF.MVVM.Views.EntityViews"
-      mc:Ignorable="d" 
-             xmlns:vm="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages"
-        d:DataContext="{d:DesignInstance vm:StudentPageVM, IsDesignTimeCreatable=False }"
-      d:DesignHeight="450" d:DesignWidth="800"
-      >
+﻿<UserControl
+    x:Class="CourseManagerWPF.MVVM.Views.EntityViews.StudentV"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CourseManagerWPF.MVVM.Views.EntityViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages"
+    d:DataContext="{d:DesignInstance vm:StudentPageVM,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -20,20 +22,22 @@
 
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" 
-            Orientation="Vertical" 
-            Margin="10" HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+        <StackPanel
+            Grid.Row="0"
+            Margin="10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Orientation="Vertical">
 
             <Image
-                HorizontalAlignment="Left"
                 Width="40"
                 Height="40"
                 Margin="5"
+                HorizontalAlignment="Left"
                 Source="{StaticResource IconStudent}" />
 
             <StackPanel Orientation="Horizontal">
@@ -52,9 +56,9 @@
                     Background="White"
                     BorderThickness="0"
                     FontSize="20"
-                    Text="{Binding Student.Student.Name }" />
+                    Text="{Binding Student.Student.Name}" />
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal">
                 <Image
                     Width="18"
@@ -71,9 +75,9 @@
                     Background="White"
                     BorderThickness="0"
                     FontSize="20"
-                    Text="{Binding Student.Student.Surname }" />
+                    Text="{Binding Student.Student.Surname}" />
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal">
                 <Image
                     Width="18"
@@ -90,7 +94,7 @@
                     Background="White"
                     BorderThickness="0"
                     FontSize="20"
-                    Text="{Binding Student.Student.Patronymic }" />
+                    Text="{Binding Student.Student.Patronymic}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -124,7 +128,7 @@
                     Background="White"
                     BorderThickness="0"
                     FontSize="20"
-                    Text="{Binding Student.Student.Email }" />
+                    Text="{Binding Student.Student.Email}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -143,27 +147,27 @@
                     Background="White"
                     BorderThickness="0"
                     FontSize="20"
-                    Text="{Binding Student.Student.Rating }" />
+                    Text="{Binding Student.Student.Rating}" />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="1">
+            <StackPanel Margin="1" Orientation="Horizontal">
                 <Image
                     Width="20"
                     Height="20 "
                     Margin="5"
-                    Source="{StaticResource IconSelectItem}" />     
+                    Source="{StaticResource IconSelectItem}" />
                 <TextBlock MinWidth="80" FontSize="20">
                     <Run FontWeight="Bold" Text="Group &gt;&gt;" />
                 </TextBlock>
-                <ComboBox 
+                <ComboBox
                     Width="100"
-                    Margin="5,0,0,0" 
+                    Margin="5,0,0,0"
                     ItemsSource="{Binding Groups}"
                     SelectedValue="{Binding Student.Student.Group}"
                     SelectedValuePath="Group">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Group.Name}"/>
+                            <TextBlock Text="{Binding Group.Name}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -175,12 +179,20 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Margin="10" Content="Delete" Width="80" Height="40" 
-                Command="{Binding Commands.DeleteStudent}" 
-                CommandParameter="{Binding Student}"/>
-            <Button Margin="10" Content="Update" Width="80" Height="40" 
-                Command="{Binding Commands.UpdateStudent}" 
-                CommandParameter="{Binding Student}"/>
+            <Button
+                Width="80"
+                Height="40"
+                Margin="10"
+                Command="{Binding Commands.DeleteStudent}"
+                CommandParameter="{Binding Student}"
+                Content="Delete" />
+            <Button
+                Width="80"
+                Height="40"
+                Margin="10"
+                Command="{Binding Commands.UpdateStudent}"
+                CommandParameter="{Binding Student}"
+                Content="Update" />
         </StackPanel>
 
     </Grid>
