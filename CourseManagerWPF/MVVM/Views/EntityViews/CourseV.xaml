@@ -52,10 +52,6 @@
                 <TextBox
                     Width="auto"
                     MinWidth="100"
-                    Margin="10,0,0,0"
-                    Background="White"
-                    BorderThickness="0"
-                    FontSize="20"
                     Text="{Binding Course.Course.Name}" />
             </StackPanel>
 

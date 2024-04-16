@@ -3,6 +3,7 @@ using CourseManagerWPF.Database;
 using CourseManagerWPF.MVVM.Models;
 using CourseManagerWPF.MVVM.ViewModels.Entity.Extensions;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
+using CourseManagerWPF.MVVM.Views.EntityViews;
 using CourseManagerWPF.Services.DocumentСreator;
 using CourseManagerWPF.Services.ScvManager;
 using Microsoft.Win32;
@@ -55,6 +56,7 @@ namespace CourseManagerWPF.Commands
             course.Course.Groups = newCourse.Groups;
 
             _dbRepository.DbSaveChanges();
+            courseVM.ViewModelChange();
         }
         public void DeleteCourse(CourseVM course)
         {
@@ -83,7 +85,7 @@ namespace CourseManagerWPF.Commands
             group.Group.Teacher = newGroup.Teacher;
             group.Group.TeacherId = newGroup.TeacherId;
 
-            _dbRepository.DbSaveChanges();
+            groupVM.ViewModelChange();
         }
         public void DeleteGroup(GroupVM group)
         {
@@ -140,6 +142,7 @@ namespace CourseManagerWPF.Commands
                 foreach (var student in students)
                     AddStudent(new StudentVM(student.Student));
             }
+            group.ViewModelChange();
         }
 
         public void AddStudent(StudentVM student)
@@ -165,6 +168,7 @@ namespace CourseManagerWPF.Commands
             student.Student.GroupId = newStudent.GroupId;   
 
             _dbRepository.DbSaveChanges();
+            studentVM.ViewModelChange();
         }
         public void DeleteStudent(StudentVM student)
         {
@@ -194,6 +198,7 @@ namespace CourseManagerWPF.Commands
             teacher.Teacher.Email = newTeacher.Email;
 
             _dbRepository.DbSaveChanges();
+            teacherVM.ViewModelChange();
         }
         public void DeleteTeacher(TeacherVM teacher)
         {
