@@ -35,51 +35,62 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <StackPanel
-                    Grid.Row="0"
-                    Margin="10"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                    <Image
-                        Width="40"
-                        Height="40"
-                        Margin="5"
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="10"
                         HorizontalAlignment="Left"
-                        Source="{StaticResource IconCourse}" />
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
 
-                    <StackPanel Margin="1" Orientation="Horizontal">
                         <Image
-                            Width="18"
-                            Height="18"
+                            Width="40"
+                            Height="40"
                             Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Name:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Course.Course.Name, UpdateSourceTrigger=PropertyChanged}" />
+                            HorizontalAlignment="Left"
+                            Source="{StaticResource IconCourse}" />
+
+                        <StackPanel Margin="1" Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Name:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Margin="10,0,0,0"
+                                Background="White"
+                                BorderThickness="0"
+                                FontSize="20"
+                                Text="{Binding Course.Course.Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+
+
                     </StackPanel>
 
-                    <Button
-                        Width="100"
-                        Height="40"
-                        Margin="30"
-                        Command="{Binding Commands.AddCourse}"
-                        CommandParameter="{Binding GetCourse}"
-                        Content="Add course"
-                        PreviewMouseDown="Button_PreviewMouseDownCourse" />
-
-                </StackPanel>
-
-
+                    <GroupBox Grid.Row="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="100"
+                                Height="40"
+                                Margin="10"
+                                Command="{Binding Commands.AddCourse}"
+                                CommandParameter="{Binding GetCourse}"
+                                Content="Create course"
+                                PreviewMouseDown="Button_PreviewMouseDownCourse" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
 
             <TabItem>
@@ -93,99 +104,109 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <StackPanel
-                    Grid.Row="0"
-                    Margin="10"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                    <Image
-                        Width="40"
-                        Height="40"
-                        Margin="5"
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="10"
                         HorizontalAlignment="Left"
-                        Source="{StaticResource IconGroup}" />
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
 
-                    <StackPanel Margin="1" Orientation="Horizontal">
                         <Image
-                            Width="18"
-                            Height="18"
+                            Width="40"
+                            Height="40"
                             Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Name:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Group.Group.Name, UpdateSourceTrigger=PropertyChanged}" />
+                            HorizontalAlignment="Left"
+                            Source="{StaticResource IconGroup}" />
+
+                        <StackPanel Margin="1" Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Name:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Margin="10,0,0,0"
+                                Background="White"
+                                BorderThickness="0"
+                                FontSize="20"
+                                Text="{Binding Group.Group.Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <StackPanel Margin="1" Orientation="Horizontal">
+                            <Image
+                                Width="20"
+                                Height="20 "
+                                Margin="5"
+                                Source="{StaticResource IconSelectItem}" />
+                            <TextBlock MinWidth="80" FontSize="20">
+                                <Run FontWeight="Bold" Text="Course &gt;&gt;" />
+                            </TextBlock>
+                            <ComboBox
+                                Width="100"
+                                Margin="5,0,0,0"
+                                ItemsSource="{Binding Courses}"
+                                SelectedValue="{Binding Group.Group.Course}"
+                                SelectedValuePath="Course"
+                                Text="Select course">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Course.Name, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                            </ComboBox>
+
+                        </StackPanel>
+
+                        <StackPanel Margin="1" Orientation="Horizontal">
+                            <Image
+                                Width="20"
+                                Height="20 "
+                                Margin="5"
+                                Source="{StaticResource IconSelectItem}" />
+                            <TextBlock MinWidth="80" FontSize="20">
+                                <Run FontWeight="Bold" Text="Teacher &gt;&gt;" />
+                            </TextBlock>
+                            <ComboBox
+                                Width="100"
+                                Margin="5,0,0,0"
+                                ItemsSource="{Binding Teachers}"
+                                SelectedValue="{Binding Group.Group.Teacher}"
+                                SelectedValuePath="Teacher"
+                                Text="Select teacher">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Teacher.Name, UpdateSourceTrigger=PropertyChanged}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Margin="1" Orientation="Horizontal">
-                        <Image
-                            Width="20"
-                            Height="20 "
-                            Margin="5"
-                            Source="{StaticResource IconSelectItem}" />
-                        <TextBlock MinWidth="80" FontSize="20">
-                            <Run FontWeight="Bold" Text="Course &gt;&gt;" />
-                        </TextBlock>
-                        <ComboBox
-                            Width="100"
-                            Margin="5,0,0,0"
-                            ItemsSource="{Binding Courses}"
-                            SelectedValue="{Binding Group.Group.Course}"
-                            SelectedValuePath="Course"
-                            Text="Select course">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Course.Name, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-
-                        </ComboBox>
-
-                    </StackPanel>
-
-                    <StackPanel Margin="1" Orientation="Horizontal">
-                        <Image
-                            Width="20"
-                            Height="20 "
-                            Margin="5"
-                            Source="{StaticResource IconSelectItem}" />
-                        <TextBlock MinWidth="80" FontSize="20">
-                            <Run FontWeight="Bold" Text="Teacher &gt;&gt;" />
-                        </TextBlock>
-                        <ComboBox
-                            Width="100"
-                            Margin="5,0,0,0"
-                            ItemsSource="{Binding Teachers}"
-                            SelectedValue="{Binding Group.Group.Teacher}"
-                            SelectedValuePath="Teacher"
-                            Text="Select teacher">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Teacher.Name, UpdateSourceTrigger=PropertyChanged}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </StackPanel>
-
-                    <Button
-                        Width="100"
-                        Height="40"
-                        Margin="30"
-                        Command="{Binding Commands.AddGroup}"
-                        CommandParameter="{Binding GetGroup}"
-                        Content="Add group"
-                        PreviewMouseDown="Button_PreviewMouseDownGroup" />
-                </StackPanel>
-
+                    <GroupBox Grid.Row="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="100"
+                                Height="40"
+                                Margin="10"
+                                Command="{Binding Commands.AddGroup}"
+                                CommandParameter="{Binding GetGroup}"
+                                Content="Create group"
+                                PreviewMouseDown="Button_PreviewMouseDownGroup" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
 
             <TabItem>
@@ -199,164 +220,156 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <StackPanel
-                    Grid.Row="0"
-                    Margin="10"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                    <Image
-                        Width="40"
-                        Height="40"
-                        Margin="5"
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="10"
                         HorizontalAlignment="Left"
-                        Source="{StaticResource IconStudent}" />
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
 
-                    <StackPanel Orientation="Horizontal">
                         <Image
-                            Width="18"
-                            Height="18"
+                            Width="40"
+                            Height="40"
                             Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Name:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Student.Student.Name, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                            HorizontalAlignment="Left"
+                            Source="{StaticResource IconStudent}" />
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Surname:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Student.Student.Surname, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Name:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Student.Student.Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Patronymic:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Student.Student.Patronymic, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Surname:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Student.Student.Surname, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Birthday:" />
-                        </TextBlock>
-                        <DatePicker
-                            BorderThickness="0"
-                            FontSize="18"
-                            SelectedDate="{Binding Student.Student.Birthday, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Patronymic:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Student.Student.Patronymic, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Email:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Student.Student.Email, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Birthday:" />
+                            </TextBlock>
+                            <DatePicker
+                                BorderThickness="0"
+                                FontSize="18"
+                                SelectedDate="{Binding Student.Student.Birthday, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Rating:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Student.Student.Rating, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Email:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Student.Student.Email, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
 
-                    <StackPanel Margin="1" Orientation="Horizontal">
-                        <Image
-                            Width="20"
-                            Height="20 "
-                            Margin="5"
-                            Source="{StaticResource IconSelectItem}" />
-                        <TextBlock MinWidth="80" FontSize="20">
-                            <Run FontWeight="Bold" Text="Group &gt;&gt;" />
-                        </TextBlock>
-                        <ComboBox
-                            Width="100"
-                            Margin="5,0,0,0"
-                            ItemsSource="{Binding Groups}"
-                            SelectedValue="{Binding Student.Student.Group}"
-                            SelectedValuePath="Group">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Group.Name}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Rating:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                PreviewTextInput="TextBox_NumericOnly"
+                                Text="{Binding Student.Student.Rating, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <StackPanel Margin="1" Orientation="Horizontal">
+                            <Image
+                                Width="20"
+                                Height="20 "
+                                Margin="5"
+                                Source="{StaticResource IconSelectItem}" />
+                            <TextBlock MinWidth="80" FontSize="20">
+                                <Run FontWeight="Bold" Text="Group &gt;&gt;" />
+                            </TextBlock>
+                            <ComboBox
+                                Width="100"
+                                Margin="5,0,0,0"
+                                ItemsSource="{Binding Groups}"
+                                SelectedValue="{Binding Student.Student.Group}"
+                                SelectedValuePath="Group">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Group.Name}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                        </StackPanel>
 
                     </StackPanel>
 
-                    <Button
-                        Width="100"
-                        Height="40"
-                        Margin="30"
-                        Command="{Binding Commands.AddStudent}"
-                        CommandParameter="{Binding GetStudent}"
-                        Content="Add student"
-                        PreviewMouseDown="Button_PreviewMouseDownStudent" />
-
-                </StackPanel>
+                    <GroupBox Grid.Row="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="100"
+                                Height="40"
+                                Margin="10"
+                                Command="{Binding Commands.AddStudent}"
+                                CommandParameter="{Binding GetStudent}"
+                                Content="Create student"
+                                PreviewMouseDown="Button_PreviewMouseDownStudent" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
 
             </TabItem>
 
@@ -371,122 +384,118 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <StackPanel
-                    Grid.Row="0"
-                    Margin="10"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                    <Image
-                        Width="40"
-                        Height="40"
-                        Margin="5"
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="10"
                         HorizontalAlignment="Left"
-                        Source="{StaticResource IconTeacher}" />
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
 
-                    <StackPanel Orientation="Horizontal">
                         <Image
-                            Width="18"
-                            Height="18"
+                            Width="40"
+                            Height="40"
                             Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Name:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Teacher.Teacher.Name, UpdateSourceTrigger=PropertyChanged}" />
+                            HorizontalAlignment="Left"
+                            Source="{StaticResource IconTeacher}" />
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Name:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Teacher.Teacher.Name, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Surname:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Teacher.Teacher.Surname, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Patronymic:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Teacher.Teacher.Patronymic, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Birthday:" />
+                            </TextBlock>
+                            <DatePicker
+                                BorderThickness="0"
+                                FontSize="18"
+                                SelectedDate="{Binding Teacher.Teacher.Birthday, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image
+                                Width="18"
+                                Height="18"
+                                Margin="5"
+                                Source="{StaticResource IconPencil}" />
+                            <TextBlock MinWidth="120" FontSize="20">
+                                <Run FontWeight="Bold" Text="Email:" />
+                            </TextBlock>
+                            <TextBox
+                                Width="auto"
+                                MinWidth="100"
+                                Text="{Binding Teacher.Teacher.Email, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+
+
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Surname:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Teacher.Teacher.Surname, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Patronymic:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Teacher.Teacher.Patronymic, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Birthday:" />
-                        </TextBlock>
-                        <DatePicker
-                            BorderThickness="0"
-                            FontSize="18"
-                            SelectedDate="{Binding Teacher.Teacher.Birthday, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <Image
-                            Width="18"
-                            Height="18"
-                            Margin="5"
-                            Source="{StaticResource IconPencil}" />
-                        <TextBlock MinWidth="120" FontSize="20">
-                            <Run FontWeight="Bold" Text="Email:" />
-                        </TextBlock>
-                        <TextBox
-                            Width="auto"
-                            MinWidth="100"
-                            Margin="10,0,0,0"
-                            Background="White"
-                            BorderThickness="0"
-                            FontSize="20"
-                            Text="{Binding Teacher.Teacher.Email, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-
-                    <Button
-                        Width="100"
-                        Height="40"
-                        Margin="30"
-                        Command="{Binding Commands.AddTeacher}"
-                        CommandParameter="{Binding GetTeacher}"
-                        Content="Add teacher"
-                        PreviewMouseDown="Button_PreviewMouseDownTeacher" />
-
-                </StackPanel>
-
+                    <GroupBox Grid.Row="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                                Width="100"
+                                Height="40"
+                                Margin="10"
+                                Command="{Binding Commands.AddTeacher}"
+                                CommandParameter="{Binding GetTeacher}"
+                                Content="Create teacher"
+                                PreviewMouseDown="Button_PreviewMouseDownTeacher" />
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
         </TabControl>
 

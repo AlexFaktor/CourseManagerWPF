@@ -2,16 +2,8 @@
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using CourseManagerWPF.MVVM.ViewModels.Pages;
 using CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CourseManagerWPF
 {
@@ -25,11 +17,30 @@ namespace CourseManagerWPF
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void RefreshList()
+        {
+            listCourses.Items.Refresh();
+            listGroups.Items.Refresh();
+            listStudents.Items.Refresh();
+            listTeachers.Items.Refresh();
+        }
+
+        private void Button_NewCreatePage(object sender, RoutedEventArgs e)
         {
             if (DataContext is MainVM vm)
             {
                 vm.Page = new CreatePageVM();
+            }
+        }
+
+        private void Button_RefreshList(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MainVM)
+            {
+                listCourses.SelectedItem = null;
+                listGroups.SelectedItem = null;
+                listStudents.SelectedItem = null;
+                listTeachers.SelectedItem = null;
             }
         }
 
@@ -41,6 +52,7 @@ namespace CourseManagerWPF
                     vm.Page = new CoursePageVM((CourseVM)listCourses.SelectedItem);
                 else
                     vm.Page = new CreatePageVM();
+                listCourses.Items.Refresh();
             }
         }
 
@@ -53,9 +65,10 @@ namespace CourseManagerWPF
                     vm.Page = new GroupPageVM((GroupVM)listGroups.SelectedItem);
                 else
                     vm.Page = new CreatePageVM();
+                listGroups.Items.Refresh();
             }
         }
-        
+
         private void ListBox_UnselectedStudent(object sender, RoutedEventArgs e)
         {
             if (sender is ListBox listStudents && DataContext is MainVM vm)
@@ -64,9 +77,10 @@ namespace CourseManagerWPF
                     vm.Page = new StudentPageVM((StudentVM)listStudents.SelectedItem);
                 else
                     vm.Page = new CreatePageVM();
+                listStudents.Items.Refresh();
             }
         }
-        
+
         private void ListBox_UnselectedTeacher(object sender, RoutedEventArgs e)
         {
             if (sender is ListBox listTeachers && DataContext is MainVM vm)
@@ -75,16 +89,6 @@ namespace CourseManagerWPF
                     vm.Page = new TeacherPageVM((TeacherVM)listTeachers.SelectedItem);
                 else
                     vm.Page = new CreatePageVM();
-            }
-        }
-
-        private void ListBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Q  && sender is ListBox listBox)
-            {
-                listBox.SelectedItem = null;
-                listBox.SelectedItem = null;
-                listBox.SelectedItem = null;
             }
         }
     }

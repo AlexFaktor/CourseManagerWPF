@@ -36,7 +36,7 @@ namespace CourseManagerWPF
             Students = new ObservableCollection<StudentVM>(Database.GetStudentsVMs());
             Teachers = new ObservableCollection<TeacherVM>(Database.GetTeacherVMs());
 
-            AppCommands = new AppCommands(DbContext, DbRepository, Database, Courses!, Groups!, Students!, Teachers!);
+            AppCommands = new AppCommands( DbRepository , Courses!, Groups!, Students!, Teachers!);
             Commands = new AppCommandsBinding(AppCommands);
         }
 

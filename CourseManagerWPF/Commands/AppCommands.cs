@@ -1,5 +1,4 @@
 ﻿using CourseManagerDatabase.Database;
-using CourseManagerWPF.Database;
 using CourseManagerWPF.MVVM.ViewModels.Entity.Extensions;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using CourseManagerWPF.Services.DocumentСreator;
@@ -12,24 +11,20 @@ namespace CourseManagerWPF.Commands
 {
     public class AppCommands
     {
-        private SchoolDbContext _dbContext;
-        private SchoolRepository _dbRepository;
-        private AppDatabase _database;
+        private readonly SchoolRepository _dbRepository;
 
-        private ObservableCollection<CourseVM> _courses;
-        private ObservableCollection<GroupVM> _groups;
-        private ObservableCollection<StudentVM> _students;
-        private ObservableCollection<TeacherVM> _teachers;
+        private readonly ObservableCollection<CourseVM> _courses;
+        private readonly ObservableCollection<GroupVM> _groups;
+        private readonly ObservableCollection<StudentVM> _students;
+        private readonly ObservableCollection<TeacherVM> _teachers;
 
-        public AppCommands(SchoolDbContext dbContext, SchoolRepository dbRepository, AppDatabase database,
+        public AppCommands(SchoolRepository dbRepository,
             ObservableCollection<CourseVM> courses,
             ObservableCollection<GroupVM> groups,
             ObservableCollection<StudentVM> students,
             ObservableCollection<TeacherVM> teachers)
         {
-            _dbContext = dbContext;
             _dbRepository = dbRepository;
-            _database = database;
 
             _courses = courses;
             _groups = groups;
@@ -48,6 +43,7 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
+
         public void UpdateCourse(CourseVM courseVM)
         {
             if (!DataValidator.IsCourseValid(courseVM))
@@ -60,8 +56,8 @@ namespace CourseManagerWPF.Commands
             course.Course.Groups = newCourse.Groups;
 
             _dbRepository.DbSaveChanges();
-            courseVM.ViewModelChange();
         }
+
         public void DeleteCourse(CourseVM course)
         {
             _dbRepository.CourseService.DeleteCourse(course.Course);
@@ -81,6 +77,7 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
+
         public void UpdateGroup(GroupVM groupVM)
         {
             if (!DataValidator.IsGroupValid(groupVM))
@@ -95,8 +92,9 @@ namespace CourseManagerWPF.Commands
             group.Group.Teacher = newGroup.Teacher;
             group.Group.TeacherId = newGroup.TeacherId;
 
-            groupVM.ViewModelChange();
+            _dbRepository.DbSaveChanges();
         }
+
         public void DeleteGroup(GroupVM group)
         {
             _dbRepository.GroupService.DeleteGroup(group.Group);
@@ -104,7 +102,8 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
-        public void ExportGroup(GroupVM groupVM)
+
+        public static void ExportGroup(GroupVM groupVM)
         {
             SaveFileDialog saveFileDialog = new()
             {
@@ -139,6 +138,7 @@ namespace CourseManagerWPF.Commands
                 }
             }
         }
+
         public void ImportGroup(GroupVM group)
         {
             OpenFileDialog openFileDialog = new()
@@ -152,7 +152,6 @@ namespace CourseManagerWPF.Commands
                 foreach (var student in students)
                     AddStudent(new StudentVM(student.Student));
             }
-            group.ViewModelChange();
         }
 
         public void AddStudent(StudentVM student)
@@ -166,6 +165,7 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
+
         public void UpdateStudent(StudentVM studentVM)
         {
             if (!DataValidator.IsStudentValid(studentVM))
@@ -184,8 +184,8 @@ namespace CourseManagerWPF.Commands
             student.Student.GroupId = newStudent.GroupId;
 
             _dbRepository.DbSaveChanges();
-            studentVM.ViewModelChange();
         }
+
         public void DeleteStudent(StudentVM student)
         {
             _dbRepository.StudentService.DeleteStudent(student.Student);
@@ -205,6 +205,7 @@ namespace CourseManagerWPF.Commands
 
             _dbRepository.DbSaveChanges();
         }
+
         public void UpdateTeacher(TeacherVM teacherVM)
         {
             if (!DataValidator.IsTeacherValid(teacherVM))
@@ -220,7 +221,6 @@ namespace CourseManagerWPF.Commands
             teacher.Teacher.Email = newTeacher.Email;
 
             _dbRepository.DbSaveChanges();
-            teacherVM.ViewModelChange();
         }
         public void DeleteTeacher(TeacherVM teacher)
         {

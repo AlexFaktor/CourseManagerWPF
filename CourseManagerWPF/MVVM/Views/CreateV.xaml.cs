@@ -45,5 +45,19 @@ namespace CourseManagerWPF.MVVM.Views
                 button.CommandParameter = (button.DataContext as CreatePageVM)!.GetTeacher;
             }
         }
+
+        private void TextBox_NumericOnly(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextNumeric(e.Text);
+
+            static bool IsTextNumeric(string str)
+            {
+                System.Text.RegularExpressions.Regex reg = MyRegex();
+                return !reg.IsMatch(str);
+            }
+        }
+
+        [System.Text.RegularExpressions.GeneratedRegex("[^0-9]")]
+        private static partial System.Text.RegularExpressions.Regex MyRegex();
     }
 }

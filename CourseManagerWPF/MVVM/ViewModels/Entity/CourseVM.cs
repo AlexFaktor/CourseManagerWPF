@@ -12,10 +12,5 @@ namespace CourseManagerWPF.MVVM.ViewModels.Entitys
             get => _courseRecord;
             set => Set(ref _courseRecord, value);
         }
-
-        public void ViewModelChange()
-        {
-            OnPropertyChanged();
-        }
     }
 }

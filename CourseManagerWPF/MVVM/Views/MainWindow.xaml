@@ -49,9 +49,9 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <StackPanel>
+            <StackPanel Grid.Row="0">
 
-                <TabControl>
+                <TabControl Grid.Row="0">
 
                     <TabItem>
                         <TabItem.Header>
@@ -67,7 +67,6 @@
                         <ListBox
                             x:Name="listCourses"
                             ItemsSource="{Binding Courses}"
-                            KeyDown="ListBox_KeyDown"
                             SelectionChanged="ListBox_UnselectedCourse">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -95,7 +94,6 @@
                             x:Name="listGroups"
                             VerticalAlignment="Bottom"
                             ItemsSource="{Binding Groups}"
-                            KeyDown="ListBox_KeyDown"
                             SelectionChanged="ListBox_UnselectedGroup">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -119,23 +117,24 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <ListBox
-                            x:Name="listStudents"
-                            ItemsSource="{Binding Students}"
-                            KeyDown="ListBox_KeyDown"
-                            SelectionChanged="ListBox_UnselectedStudent">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Student.Name}" />
-                                        <TextBlock Text=" " />
-                                        <TextBlock Text="{Binding Student.Surname}" />
-                                        <TextBlock Text=" " />
-                                        <TextBlock Text="{Binding Student.Patronymic}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <Grid Height="auto">
+                            <ListBox
+                                x:Name="listStudents"
+                                ItemsSource="{Binding Students}"
+                                SelectionChanged="ListBox_UnselectedStudent">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Student.Name}" />
+                                            <TextBlock Text=" " />
+                                            <TextBlock Text="{Binding Student.Surname}" />
+                                            <TextBlock Text=" " />
+                                            <TextBlock Text="{Binding Student.Patronymic}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
 
                     </TabItem>
 
@@ -153,7 +152,6 @@
                         <ListBox
                             x:Name="listTeachers"
                             ItemsSource="{Binding Teachers}"
-                            KeyDown="ListBox_KeyDown"
                             SelectionChanged="ListBox_UnselectedTeacher">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
@@ -175,12 +173,20 @@
             </StackPanel>
 
             <GroupBox Grid.Row="1" MinHeight="40">
-                <StackPanel Margin="5" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
                     <Button
                         Width="80"
                         Height="38"
-                        Click="Button_Click"
-                        Content="New object" />
+                        Margin="10"
+                        Click="Button_NewCreatePage"
+                        Content="Create page" />
+
+                    <Button
+                        Width="80"
+                        Height="38"
+                        Margin="10"
+                        Click="Button_RefreshList"
+                        Content="Refresh list" />
                 </StackPanel>
             </GroupBox>
 

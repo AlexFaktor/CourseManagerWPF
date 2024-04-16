@@ -2,6 +2,7 @@
 using CourseManagerWPF.MVVM.ViewModels.Entity.Extensions;
 using CourseManagerWPF.MVVM.ViewModels.Entitys;
 using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CourseManagerWPF.Commands
@@ -9,7 +10,7 @@ namespace CourseManagerWPF.Commands
 
     public class AppCommandsBinding
     {
-        private AppCommands _appCommands;
+        private readonly AppCommands _appCommands;
 
         public AppCommandsBinding(AppCommands appCommands)
         {
@@ -52,6 +53,12 @@ namespace CourseManagerWPF.Commands
         public ICommand UpdateTeacher { get; }
         public ICommand DeleteTeacher { get; }
 
+        private static MainWindow GetMainWindow()
+        {
+            var app = (App)Application.Current;
+            return (MainWindow)app.MainWindow;
+        } 
+
         private bool CanAddCourseCommandExecute(object arg) => true;
 
         private void OnAddCourseCommandExecuted(object obj)
@@ -59,6 +66,7 @@ namespace CourseManagerWPF.Commands
             if (obj is CourseVM course)
             {
                 _appCommands.AddCourse(course);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -69,6 +77,7 @@ namespace CourseManagerWPF.Commands
             if (obj is CourseVM course)
             {
                 _appCommands.UpdateCourse(course);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -89,6 +98,7 @@ namespace CourseManagerWPF.Commands
             if (obj is GroupVM group)
             {
                 _appCommands.AddGroup(group);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -99,6 +109,7 @@ namespace CourseManagerWPF.Commands
             if (obj is GroupVM group)
             {
                 _appCommands.UpdateGroup(group);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -118,7 +129,7 @@ namespace CourseManagerWPF.Commands
         {
             if (obj is GroupVM group)
             {
-                _appCommands.ExportGroup(group);
+                AppCommands.ExportGroup(group);
             }
         }
 
@@ -129,6 +140,7 @@ namespace CourseManagerWPF.Commands
             if (obj is GroupVM group)
             {
                 _appCommands.ImportGroup(group);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -139,6 +151,7 @@ namespace CourseManagerWPF.Commands
             if (obj is StudentVM student)
             {
                 _appCommands.AddStudent(student);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -149,6 +162,7 @@ namespace CourseManagerWPF.Commands
             if (obj is StudentVM student)
             {
                 _appCommands.UpdateStudent(student);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -169,6 +183,7 @@ namespace CourseManagerWPF.Commands
             if (obj is TeacherVM teacher)
             {
                 _appCommands.AddTeacher(teacher);
+                GetMainWindow().RefreshList();
             }
         }
 
@@ -179,6 +194,7 @@ namespace CourseManagerWPF.Commands
             if (obj is TeacherVM teacher)
             {
                 _appCommands.UpdateTeacher(teacher);
+                GetMainWindow().RefreshList();
             }
         }
 
