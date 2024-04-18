@@ -12,14 +12,23 @@ namespace CourseManagerDatabase.Database.Services
 
         public bool UpdateStudent(StudentRecord studentRecord)
         {
-            if (_db.Students.Any(c => c.Id == studentRecord.Id))
+            var existingStudent = _db.Students.FirstOrDefault(s => s.Id == studentRecord.Id);
+            if (existingStudent != null)
             {
-                DeleteStudent(studentRecord);
-                AddStudentRecord(studentRecord);
+                existingStudent.Name = studentRecord.Name;
+                existingStudent.Surname = studentRecord.Surname;
+                existingStudent.Patronymic = studentRecord.Patronymic;
+                existingStudent.Birthday = studentRecord.Birthday;
+                existingStudent.Email = studentRecord.Email;
+                existingStudent.Rating = studentRecord.Rating;
+                existingStudent.GroupId = studentRecord.GroupId;
+                existingStudent.Group = studentRecord.Group;
+                _db.SaveChanges();
                 return true;
             }
             return false;
         }
+
 
         public bool DeleteStudent(StudentRecord studentRecord)
         {

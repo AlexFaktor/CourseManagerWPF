@@ -12,14 +12,21 @@ namespace CourseManagerDatabase.Database.Services
 
         public bool UpdateGroup(GroupRecord groupRecord)
         {
-            if (_db.Groups.Any(c => c.Id == groupRecord.Id))
+            var existingGroup = _db.Groups.FirstOrDefault(g => g.Id == groupRecord.Id);
+            if (existingGroup != null)
             {
-                DeleteGroup(groupRecord);
-                AddGroupRecord(groupRecord);
+                existingGroup.Name = groupRecord.Name;
+                existingGroup.CourseId = groupRecord.CourseId;
+                existingGroup.Course = groupRecord.Course;
+                existingGroup.Students = groupRecord.Students;
+                existingGroup.TeacherId = groupRecord.TeacherId;
+                existingGroup.Teacher = groupRecord.Teacher;
+                _db.SaveChanges();
                 return true;
             }
             return false;
         }
+
 
         public bool DeleteGroup(GroupRecord groupRecord)
         {

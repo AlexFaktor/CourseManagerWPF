@@ -12,10 +12,12 @@ namespace CourseManagerDatabase.Database.Services
 
         public bool UpdateCourse(CourseRecord courseRecord)
         {
-            if (_db.Courses.Any(c => c.Id == courseRecord.Id))
+            var existingCourse = _db.Courses.FirstOrDefault(c => c.Id == courseRecord.Id);
+            if (existingCourse != null)
             {
-                DeleteCourse(courseRecord);
-                AddCourseRecord(courseRecord);
+                existingCourse.Name = courseRecord.Name;
+                existingCourse.Groups = courseRecord.Groups;
+                _db.SaveChanges();
                 return true;
             }
             return false;
