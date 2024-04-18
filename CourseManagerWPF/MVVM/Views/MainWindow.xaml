@@ -1,0 +1,229 @@
+﻿<Window
+    x:Class="CourseManagerWPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CourseManagerWPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages"
+    xmlns:pagesEnity="clr-namespace:CourseManagerWPF.MVVM.ViewModels.Pages.EnityPages"
+    xmlns:views="clr-namespace:CourseManagerWPF.MVVM.Views"
+    xmlns:viewsEntity="clr-namespace:CourseManagerWPF.MVVM.Views.EntityViews"
+    xmlns:vm="clr-namespace:CourseManagerWPF.MVVM.ViewModels"
+    Title="Course Manager"
+    Width="800"
+    Height="450"
+    MinWidth="600"
+    MinHeight="400"
+    Background="LightGray"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <vm:MainVM />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resource/Image/ImageDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <GridSplitter
+            Grid.Column="0"
+            VerticalAlignment="Stretch"
+            Panel.ZIndex="1"
+            BorderBrush="DarkGray"
+            BorderThickness="1" />
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+
+                <TabControl Grid.Row="0">
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Width="20"
+                                    Height="20"
+                                    Source="{StaticResource IconCourse}" />
+                                <TextBlock Margin="4,4,0,0" Text="Courses" />
+                            </StackPanel>
+                        </TabItem.Header>
+
+                        <ListBox
+                            x:Name="listCourses"
+                            ItemsSource="{Binding Courses}"
+                            SelectionChanged="ListBox_UnselectedCourse">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Course.Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Width="20"
+                                    Height="20"
+                                    Source="{StaticResource IconGroup}" />
+                                <TextBlock Margin="4,4,0,0" Text="Groups" />
+                            </StackPanel>
+                        </TabItem.Header>
+
+                        <ListBox
+                            x:Name="listGroups"
+                            VerticalAlignment="Bottom"
+                            ItemsSource="{Binding Groups}"
+                            SelectionChanged="ListBox_UnselectedGroup">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Group.Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Width="20"
+                                    Height="20"
+                                    Source="{StaticResource IconStudent}" />
+                                <TextBlock Margin="4,4,0,0" Text="Students" />
+                            </StackPanel>
+                        </TabItem.Header>
+
+                        <Grid Height="auto">
+                            <ListBox
+                                x:Name="listStudents"
+                                ItemsSource="{Binding Students}"
+                                SelectionChanged="ListBox_UnselectedStudent">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Student.Name}" />
+                                            <TextBlock Text=" " />
+                                            <TextBlock Text="{Binding Student.Surname}" />
+                                            <TextBlock Text=" " />
+                                            <TextBlock Text="{Binding Student.Patronymic}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+
+                    </TabItem>
+
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Width="20"
+                                    Height="20"
+                                    Source="{StaticResource IconTeacher}" />
+                                <TextBlock Margin="4,4,0,0" Text="Teachers" />
+                            </StackPanel>
+                        </TabItem.Header>
+
+                        <ListBox
+                            x:Name="listTeachers"
+                            ItemsSource="{Binding Teachers}"
+                            SelectionChanged="ListBox_UnselectedTeacher">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Teacher.Name}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Teacher.Surname}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Teacher.Patronymic}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                    </TabItem>
+
+                </TabControl>
+
+            </StackPanel>
+
+            <GroupBox Grid.Row="1" MinHeight="40">
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        Width="80"
+                        Height="38"
+                        Margin="10"
+                        Click="Button_NewCreatePage"
+                        Content="Create page" />
+
+                    <Button
+                        Width="80"
+                        Height="38"
+                        Margin="10"
+                        Click="Button_RefreshList"
+                        Content="Refresh list" />
+                </StackPanel>
+            </GroupBox>
+
+
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+
+            <ContentControl Content="{Binding Page}">
+                <ContentControl.Resources>
+
+                    <DataTemplate DataType="{x:Type pages:CreatePageVM}">
+                        <views:CreateV />
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:CoursePageVM}">
+                        <viewsEntity:CourseV />
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:GroupPageVM}">
+                        <viewsEntity:GroupV />
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:StudentPageVM}">
+                        <viewsEntity:StudentV />
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type pagesEnity:TeacherPageVM}">
+                        <viewsEntity:TeacherV />
+                    </DataTemplate>
+
+
+                </ContentControl.Resources>
+            </ContentControl>
+
+        </Grid>
+
+    </Grid>
+</Window>

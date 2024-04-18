@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resource\Image\models\course.png" />
+    <None Remove="Resource\Image\models\group.png" />
+    <None Remove="Resource\Image\models\student.png" />
+    <None Remove="Resource\Image\models\teacher.png" />
+    <None Remove="Resource\Image\ui\delete.png" />
+    <None Remove="Resource\Image\ui\diskette_false.png" />
+    <None Remove="Resource\Image\ui\diskette_true.png" />
+    <None Remove="Resource\Image\ui\export.png" />
+    <None Remove="Resource\Image\ui\import.png" />
+    <None Remove="Resource\Image\ui\lock.png" />
+    <None Remove="Resource\Image\ui\more.png" />
+    <None Remove="Resource\Image\ui\new_file.png" />
+    <None Remove="Resource\Image\ui\pencil.png" />
+    <None Remove="Resource\Image\ui\select_items.png" />
+    <None Remove="Resource\Image\ui\updating.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Image\ui\delete.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="31.0.3" />
+    <PackageReference Include="DocX" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PdfSharpCore" Version="1.3.63" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CourseManagerDatabase\CourseManagerDatabase.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Image\models\course.png" />
+    <Resource Include="Resource\Image\models\group.png" />
+    <Resource Include="Resource\Image\models\student.png" />
+    <Resource Include="Resource\Image\models\teacher.png" />
+    <Resource Include="Resource\Image\ui\diskette_false.png" />
+    <Resource Include="Resource\Image\ui\diskette_true.png" />
+    <Resource Include="Resource\Image\ui\export.png" />
+    <Resource Include="Resource\Image\ui\import.png" />
+    <Resource Include="Resource\Image\ui\lock.png" />
+    <Resource Include="Resource\Image\ui\more.png" />
+    <Resource Include="Resource\Image\ui\new_file.png" />
+    <Resource Include="Resource\Image\ui\pencil.png" />
+    <Resource Include="Resource\Image\ui\select_items.png" />
+    <Resource Include="Resource\Image\ui\updating.png" />
+  </ItemGroup>
+
+</Project>
